@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --color-brand: #bf900f;
+  --shadow-bottom: 0 2px 6px rgba(0, 0, 0, 0.1);
+  --shadow-bottom-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --font-oswald: "Oswald", sans-serif;
+  --animate-rotate: rotate 1s ease-in-out infinite;
+  @keyframes rotate {
+    50% {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+@layer utilities {
+  .w-icon {
+    width: 1.9rem !important;
+  }
+  .h-icon {
+    height: 1.9rem !important;
+  }
+  .footer-background {
+    background-image: url("./assets/footers-background.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .category-icon {
+    width: 20% !important;
+    height: 2rem !important;
+  }
+  .bg-policy {
+    background-image: url("./assets/policy_item_background_1.webp");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
