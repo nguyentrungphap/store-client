@@ -76,3 +76,42 @@ The `ModalRoot` component (`src/components/ModalRoot/index.tsx`) listens to the 
 To show a modal, dispatch `useModalStore.getState().showModal('login', { ...props })` from anywhere in your app.
 Place `<ModalRoot />` at the root of your app (e.g., in `App.tsx` or your main layout) so it can render modals globally.
 Register your modal components in `ModalRoot` for dynamic rendering.
+
+## Button Component
+
+Reusable button component is located at `src/components/Button/index.tsx`.
+It supports variants, colors, sizes, icons, and custom classes using Tailwind CSS and `clsx`.
+
+**Props:**
+
+- `variant`: `'solid' | 'outline' | 'ghost'` (default: `'solid'`)
+- `color`: `'primary' | 'secondary' | 'danger'` (default: `'primary'`)
+- `size`: `'sm' | 'md' | 'lg'` (default: `'md'`)
+- `disabled`: `boolean`
+- `startIcon`, `endIcon`: `React.ReactNode` (icon before/after text)
+- `children`: `React.ReactNode` (button content)
+- `className`: `string` (custom classes)
+- `onClick`: `() => void` (required)
+
+**Usage Example:**
+
+```tsx
+<Button
+  variant="solid"
+  color="primary"
+  size="md"
+  startIcon={<Icon />}
+  endIcon={<Icon />}
+  onClick={() => {
+    /* handle click */
+  }}
+>
+  Click Me
+</Button>
+```
+
+**Customization:**
+
+- Use `className` to add custom styles.
+- All props are optional except `children` and `onClick`.
+- Disabled state applies opacity and disables pointer events.

@@ -1,20 +1,25 @@
 import React, { useEffect, useRef, useState } from "react";
+import cx from "clsx";
 
 interface SliderProps {
-  showDot: boolean;
+  showDot?: boolean;
   autoPlaySpeed?: number;
   transitionDuration?: number;
-  itemClass: string;
-  containerClass: string;
-  infinite: boolean;
+  itemClass?: string;
+  containerClass?: string;
+  dotClass?: string;
+  infinite?: boolean;
   children: React.ReactNode;
 }
 
 const Carousel = (props: SliderProps) => {
   const {
     children,
-    showDot,
-    infinite,
+    showDot = true,
+    itemClass,
+    containerClass,
+    infinite = true,
+    dotClass,
     transitionDuration = 300,
     autoPlaySpeed = 3000,
   } = props;
@@ -56,9 +61,11 @@ const Carousel = (props: SliderProps) => {
         {React.Children.map(children, (child, idx) => (
           <div
             key={idx}
-            className={`h-4 w-4 rounded-full cursor-pointer ${
-              activeIndex === idx ? "bg-blue-500" : "bg-gray-500"
-            }`}
+            className={cx(
+              `h-4 w-4 rounded-full cursor-pointer ${
+                activeIndex === idx ? "bg-blue-500" : "bg-gray-500"
+              }`
+            )}
             onClick={() => handleClick(idx)}
           />
         ))}
@@ -67,14 +74,15 @@ const Carousel = (props: SliderProps) => {
   };
 
   return (
-    <div className="w-3/5 h-full relative pr-2.5">
+    <div className={cx("w-3/5 h-full relative pr-2.5", containerClass)}>
       <div>
         {React.Children.map(children, (child, idx) => (
           <div
             key={idx}
-            className={`w-full h-full ${
-              activeIndex === idx ? "block" : "hidden"
-            }`}
+            className={cx(
+              `w-full h-full ${activeIndex === idx ? "block" : "hidden"}`,
+              itemClass
+            )}
           >
             {child}
           </div>
