@@ -82,7 +82,38 @@ Register your modal components in `ModalRoot` for dynamic rendering.
 Reusable button component is located at `src/components/Button/index.tsx`.
 It supports variants, colors, sizes, icons, and custom classes using Tailwind CSS and `clsx`.
 
+
+## CheckBox Component
+
+Reusable checkbox component nằm ở `src/components/CheckBox/index.tsx`. Hỗ trợ render danh sách các checkbox với trạng thái checked, disabled, label, và callback khi thay đổi.
+
 **Props:**
+
+- `menuCheckBox`: { items: Array<{ value?: string; isDisabled?: boolean; isChecked?: boolean; label?: string; className?: string; defaultValue?: string; onChange?: (checked: boolean) => void }> }
+
+**Cách hoạt động:**
+
+- Quản lý trạng thái checked cho từng checkbox bằng `useState`.
+- Khi người dùng thay đổi trạng thái, callback `onChange` (nếu có) sẽ được gọi với giá trị mới.
+
+**Ví dụ sử dụng:**
+
+```tsx
+<CheckBox
+  menuCheckBox={{
+    items: [
+      { label: "Option 1", value: "1", isChecked: true },
+      { label: "Option 2", value: "2", isDisabled: true },
+      { label: "Option 3", value: "3" },
+    ]
+  }}
+/>
+```
+
+**Tuỳ chỉnh:**
+
+- Có thể truyền className cho từng item để tuỳ chỉnh style.
+- Hỗ trợ accessibility qua label và id cho từng checkbox.
 
 - `variant`: `'solid' | 'outline' | 'ghost'` (default: `'solid'`)
 - `color`: `'primary' | 'secondary' | 'danger'` (default: `'primary'`)
