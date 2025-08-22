@@ -1,13 +1,30 @@
 import Button from "@/components/Button";
-import CheckBox from "@/components/CheckBox";
+import CheckBox, { type menuCheckBoxProps } from "@/components/CheckBox";
 import Input from "@/components/Input";
 import Select from "@/components/Select";
 import TextField from "@/components/TextField";
 import Maincontent from "@/layouts/MainLayout/components/Content";
 
-type Props = {};
+const menuCheckBox: menuCheckBoxProps["items"] = [
+  {
+    value: "item1",
+    isDisabled: false,
+    isChecked: true,
+    label: "Item 1",
+    className: "item-class",
+    defaultValue: "item1",
+  },
+  {
+    value: "item2",
+    isDisabled: true,
+    isChecked: false,
+    label: "Item 2",
+    className: "item-class",
+    defaultValue: "item2",
+  },
+];
 
-const Home = (props: Props) => {
+const Home = () => {
   return (
     <>
       <Maincontent />
@@ -20,11 +37,7 @@ const Home = (props: Props) => {
       >
         Button Text
       </Button>
-      <CheckBox>Label</CheckBox>
-      <CheckBox>Required *</CheckBox>
-      <CheckBox disabled={true} checked={true}>
-        Disabled
-      </CheckBox>
+      <CheckBox menuCheckBox={{ items: menuCheckBox }} />
       <Input type="text" />
       <Select>
         <option value="1">Select an option</option>
