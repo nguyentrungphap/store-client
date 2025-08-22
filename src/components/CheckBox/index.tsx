@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export interface MenuCheckBoxItem {
+export interface CheckboxOptionType {
   value?: string;
   isDisabled?: boolean;
   isChecked?: boolean;
@@ -11,7 +11,7 @@ export interface MenuCheckBoxItem {
 }
 
 export interface MenuCheckBoxProps {
-  items: MenuCheckBoxItem[];
+  items: CheckboxOptionType[];
 }
 
 interface PropsCheckBox {
