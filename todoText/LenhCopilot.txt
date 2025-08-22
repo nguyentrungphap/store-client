@@ -1,0 +1,2 @@
+update document {name component} into coplilot instruction
+ 

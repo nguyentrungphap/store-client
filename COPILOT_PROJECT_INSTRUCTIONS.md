@@ -110,8 +110,41 @@ It supports variants, colors, sizes, icons, and custom classes using Tailwind CS
 </Button>
 ```
 
-**Customization:**
+## DropDown Component
 
-- Use `className` to add custom styles.
-- All props are optional except `children` and `onClick`.
-- Disabled state applies opacity and disables pointer events.
+Reusable dropdown component nằm ở `src/components/DropDown/index.tsx`. Hỗ trợ các trigger (cách mở menu) như `hover`, `click`, `contextMenu` và vị trí hiển thị menu qua prop `placement`.
+
+**Props:**
+
+- `children`: React.ReactNode (nội dung nút dropdown)
+- `menu`: { items: { label: string | ReactNode; key: string; isDisable?: boolean }[] }
+- `trigger`: `'hover' | 'click' | 'contextMenu'` (default: `'hover'`)
+- `placement`: `'top' | 'bottom' | 'left' | 'right'` (default: `'bottom'`)
+
+**Cách hoạt động:**
+
+- Khi trigger là `hover`, menu sẽ hiện khi di chuột vào nút.
+- Khi trigger là `click`, menu sẽ hiện khi click vào nút.
+- Khi trigger là `contextMenu`, menu sẽ hiện khi nhấn chuột phải vào nút.
+
+**Ví dụ sử dụng:**
+
+```tsx
+<DropDown
+  trigger="click"
+  placement="bottom"
+  menu={{
+    items: [
+      { label: "Profile", key: "profile" },
+      { label: "Logout", key: "logout" },
+    ],
+  }}
+>
+  <span>User</span>
+</DropDown>
+```
+
+**Tuỳ chỉnh:**
+
+- Có thể truyền ReactNode cho label để custom giao diện item.
+- Sử dụng className để tuỳ chỉnh style cho menu hoặc nút.

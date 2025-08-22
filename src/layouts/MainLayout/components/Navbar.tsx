@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Logo from "@/assets/logo.webp";
-import DropDown from "@/components/DropDown";
+import DropDown, { type MenuProps } from "@/components/DropDown";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
 import { useModalStore } from "@/store/modalStore";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
@@ -9,6 +9,21 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
+
+  const menuItems: MenuProps["items"] = [
+    {
+      label: "Trang Chủ",
+      key: "trangchu",
+    },
+    {
+      label: "Sản Phẩm",
+      key: "sanpham",
+    },
+    {
+      label: "Liên Hệ",
+      key: "lienhe",
+    },
+  ];
   return (
     <div className="shadow-bottom-lg bg-white flex items-center justify-between p-4 sticky top-0 z-50 mb-3.5">
       <div className="flex items-center justify-between text-base font-bold gap-5">
@@ -21,7 +36,16 @@ const Navbar = () => {
         >
           Trang Chủ
         </div>
-        <DropDown />
+        <DropDown menu={{ items: menuItems }} trigger="hover">
+          <div
+            className={`hover:text-red-500 cursor-pointer ${
+              active === "allproduct" ? "text-red-500" : ""
+            }`}
+            onClick={() => setActive("allproduct")}
+          >
+            Tất Cả Sản Phẩm <span>›</span>
+          </div>
+        </DropDown>
         <div
           className={`hover:text-red-500 cursor-pointer ${
             active === "tintuc" ? "text-red-500" : ""
@@ -36,7 +60,7 @@ const Navbar = () => {
           }`}
           onClick={() => setActive("lienhe")}
         >
-          Liên hệ
+          Liên Hệ
         </div>
       </div>
       <div className="flex items-center gap-4">
