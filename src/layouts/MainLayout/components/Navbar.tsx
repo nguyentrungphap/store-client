@@ -6,6 +6,7 @@ import { useModalStore } from "@/store/modalStore";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
+import InputAnimation from "@/components/InputAnimation";
 
 const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
@@ -64,10 +65,11 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
-        <input
-          type="search"
-          placeholder="Tìm kiếm sản phẩm..."
-          className="cursor-pointer border border-gray-300 rounded-lg py-2 px-4"
+        <InputAnimation
+          placeholders={["Tìm kiếm sản phẩm...", "Bạn cần tìm gì gì?"]}
+          animationSpeed={50}
+          intervalTime={4000}
+          className="border-b-[1px] border-gray-300 w-[200px] md:w-[250px]"
         />
         <button className="cursor-pointer">
           <SearchOutlinedIcon className="w-icon h-icon" />

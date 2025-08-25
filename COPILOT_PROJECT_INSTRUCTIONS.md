@@ -314,3 +314,40 @@ import TextField from "./components/TextField";
 - You can style the input using Tailwind CSS or custom classes.
 - Supports forwarding refs for advanced use cases.
 - Add custom CSS classes for each variant (`textfield-outlined`, `textfield-filled`, `textfield-standard`).
+
+## InputAnimation Component Documentation
+
+### Description
+
+The `InputAnimation` component renders an input field with an animated placeholder that types out each letter one-by-one and cycles through multiple placeholder texts.
+
+### Props
+
+- `placeholders: string[]` — Required. Array of placeholder strings to cycle through.
+- `animationSpeed?: number` — Optional. Milliseconds per letter for typing animation (default: `40`).
+- `intervalTime?: number` — Optional. Milliseconds between changing placeholder texts (default: `3000`).
+
+### Features
+
+- Animated placeholder: each letter appears one-by-one for a typing effect.
+- Cycles through multiple placeholder texts at a set interval.
+- Customizable animation speed and interval.
+- Styled for use in forms and footers (uses Tailwind CSS).
+
+### Usage Example
+
+```tsx
+import InputAnimation from "./components/InputAnimation";
+
+<InputAnimation
+  placeholders={["Nhập địa chỉ email của bạn...", "Bạn cần tư vấn?"]}
+  animationSpeed={50}
+  intervalTime={4000}
+/>;
+```
+
+### Notes
+
+- The input uses a fixed `id="footer-email"`; update if you need a unique id for accessibility.
+- You can style the input further using Tailwind CSS or custom classes.
+- This component is ideal for newsletter forms or places where engaging placeholder text

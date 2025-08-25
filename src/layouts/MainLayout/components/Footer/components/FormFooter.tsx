@@ -1,32 +1,38 @@
-import { useEffect, useState } from "react";
-
-const placeholders = ["Nhập địa chỉ email của bạn...", "Bạn cần tư vấn?"];
+import InputAnimation from "@/components/InputAnimation";
 
 const FormFooter = () => {
-  const [index, setIndex] = useState(0);
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setIndex((prev) => (prev + 1) % placeholders.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, []);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: handle submit logic here
+  };
 
   return (
-    <div className="flex justify-center gap-[5rem] items-center mb-20 pb-20 border-b border-gray-300">
-      <div>
-        <h1 className="text-4xl mb-2">Đăng ký nhận tin</h1>
-        <span>Để nhận những ưu đãi đặc biệt</span>
+    <div className="flex flex-col md:flex-row justify-center gap-8 items-center mb-20 pb-20 border-b border-gray-300">
+      <div className="text-center md:text-left mb-4 md:mb-0">
+        <h1 className="text-3xl md:text-4xl mb-2 font-bold">
+          Đăng ký nhận tin
+        </h1>
+        <span className="text-gray-600">Để nhận những ưu đãi đặc biệt</span>
       </div>
-      <div>
-        <input
-          type="text"
-          placeholder={placeholders[index]}
-          className="w-[300px] bg-white text-black rounded-l-3xl py-2 px-4 focus:outline-none focus:ring-0 focus:border-gray-300"
+      <form className="flex" onSubmit={handleSubmit}>
+        <label htmlFor="footer-email" className="sr-only">
+          Email
+        </label>
+
+        <InputAnimation
+          placeholders={["Nhập địa chỉ email của bạn...", "Bạn cần tư vấn?"]}
+          animationSpeed={50}
+          intervalTime={4000}
+          className="rounded-l-3xl w-[200px] md:w-[300px]"
         />
-        <button className="bg-red-500 text-white rounded-r-3xl py-2 px-4">
+        <button
+          type="submit"
+          className="bg-red-500 text-white rounded-r-3xl py-2 px-4"
+          aria-label="Đăng ký nhận tin"
+        >
           Đăng ký
         </button>
-      </div>
+      </form>
     </div>
   );
 };
