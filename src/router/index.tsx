@@ -1,9 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import Home from "../pages/Home";
 import About from "../pages/About";
-import { Login } from "@mui/icons-material";
-import Register from "../pages/Register";
 import MainLayout from "@/layouts/MainLayout";
+import Product from "@/pages/Product";
+import Allproduct from "@/pages/Product/components/Allproduct";
 
 export const router = createBrowserRouter([
   {
@@ -12,4 +12,14 @@ export const router = createBrowserRouter([
     children: [{ path: "", Component: Home }],
   },
   { path: "about", Component: About },
+  {
+    path: "product",
+    Component: Product,
+    children: [
+      {
+        path: "",
+        Component: Allproduct,
+      },
+    ],
+  },
 ]);

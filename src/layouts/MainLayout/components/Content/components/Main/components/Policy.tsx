@@ -12,7 +12,7 @@ const Policy = (props: Props) => {
         <img
           src={ImageItem1}
           alt=""
-          className="w-16 h-16 object-cover rounded-full bg-red-500"
+          className="w-16 h-16 object-cover rounded-full bg-red-500 mr-4"
         />
         <div>
           <h3 className="text-xl font-bold">Free ship & Hoàn trả</h3>
@@ -26,7 +26,7 @@ const Policy = (props: Props) => {
         <img
           src={ImageItem2}
           alt=""
-          className="w-16 h-16 object-cover rounded-full bg-red-500"
+          className="w-16 h-16 object-cover rounded-full bg-red-500 mr-4"
         />
         <div>
           <h3 className="text-xl font-bold">Chính sách bảo mật</h3>
@@ -40,7 +40,7 @@ const Policy = (props: Props) => {
         <img
           src={ImageItem3}
           alt=""
-          className="w-16 h-16 object-cover rounded-full bg-red-500"
+          className="w-16 h-16 object-cover rounded-full bg-red-500 mr-4"
         />
         <div>
           <h3 className="text-xl font-bold">Chính sách bảo mật</h3>

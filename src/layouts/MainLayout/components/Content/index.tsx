@@ -2,7 +2,7 @@ import Article from "../../../Article";
 import Main from "./components/Main";
 import Sidebar from "./components/Sidebar";
 
-const Maincontent = () => {
+const Content = () => {
   return (
     <div className="flex gap-[50px] px-3.5">
       <div className="w-1/5">
@@ -15,4 +15,4 @@ const Maincontent = () => {
   );
 };
 
-export default Maincontent;
+export default Content;

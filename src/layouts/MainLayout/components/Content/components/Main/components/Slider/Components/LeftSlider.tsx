@@ -10,12 +10,12 @@ const LeftSlider = () => {
       showDot={true}
       autoPlaySpeed={3000}
       itemClass=""
-      containerClass=""
+      containerClass="max-h-[350px]"
       infinite={true}
     >
-      <img src={Img1} alt="" />
-      <img src={Img2} alt="" />
-      <img src={Img3} alt="" />
+      <img src={Img1} alt="" className="w-full h-full object-cover" />
+      <img src={Img2} alt="" className="w-full h-full object-cover" />
+      <img src={Img3} alt="" className="w-full h-full object-cover" />
     </Carousel>
   );
 };

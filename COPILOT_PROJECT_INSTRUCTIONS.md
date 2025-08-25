@@ -351,3 +351,58 @@ import InputAnimation from "./components/InputAnimation";
 - The input uses a fixed `id="footer-email"`; update if you need a unique id for accessibility.
 - You can style the input further using Tailwind CSS or custom classes.
 - This component is ideal for newsletter forms or places where engaging placeholder text
+
+## Carousel Component Documentation
+
+### Description
+
+The `Carousel` component displays a set of items (such as images or custom content) in a sliding or fading carousel format. It supports autoplay, infinite looping, navigation dots, and custom styling.
+
+### Props
+
+- `children: React.ReactNode` — Required. Carousel items (e.g. images, cards, etc.).
+- `showDot?: boolean` — Optional. Show navigation dots below the carousel (default: `true`).
+- `autoPlaySpeed?: number` — Optional. Time in ms between auto slide transitions (default: `3000`).
+- `transitionDuration?: number` — Optional. Duration in ms for slide/fade transition (default: `300`).
+- `itemClass?: string` — Optional. Custom class for each carousel item.
+- `containerClass?: string` — Optional. Custom class for the carousel container.
+- `dotClass?: string` — Optional. Custom class for navigation dots.
+- `infinite?: boolean` — Optional. Enable infinite looping (default: `true`).
+
+### Features
+
+- Autoplay with configurable speed.
+- Infinite looping of items.
+- Navigation dots for manual selection.
+- Smooth fade transition between items.
+- Responsive width and fixed height support via Tailwind CSS.
+- Customizable via className props.
+
+### Usage Example
+
+```tsx
+import Carousel from "./components/Carousel";
+import Img1 from "@/assets/slider1.jpg";
+import Img2 from "@/assets/slider2.jpg";
+import Img3 from "@/assets/slider3.jpg";
+
+<Carousel
+  showDot={true}
+  autoPlaySpeed={3000}
+  transitionDuration={400}
+  containerClass="w-4/5 h-[400px] mx-auto"
+  itemClass="rounded-lg"
+  infinite={true}
+>
+  <img src={Img1} alt="Slide 1" className="w-full h-full object-cover" />
+  <img src={Img2} alt="Slide 2" className="w-full h-full object-cover" />
+  <img src={Img3} alt="Slide 3" className="w-full h-full object-cover" />
+</Carousel>;
+```
+
+### Notes
+
+- To ensure all items have the same size, set a fixed height for the container and use `w-full h-full object-cover` for images.
+- You can pass any React node as a child (not just images).
+- Dots are keyboard accessible and support custom styling.
+- Use Tailwind CSS or your own classes for further customization.
