@@ -82,7 +82,6 @@ Register your modal components in `ModalRoot` for dynamic rendering.
 Reusable button component is located at `src/components/Button/index.tsx`.
 It supports variants, colors, sizes, icons, and custom classes using Tailwind CSS and `clsx`.
 
-
 ## CheckBox Component
 
 Reusable checkbox component nằm ở `src/components/CheckBox/index.tsx`. Hỗ trợ render danh sách các checkbox với trạng thái checked, disabled, label, và callback khi thay đổi.
@@ -105,7 +104,7 @@ Reusable checkbox component nằm ở `src/components/CheckBox/index.tsx`. Hỗ 
       { label: "Option 1", value: "1", isChecked: true },
       { label: "Option 2", value: "2", isDisabled: true },
       { label: "Option 3", value: "3" },
-    ]
+    ],
   }}
 />
 ```
@@ -179,3 +178,139 @@ Reusable dropdown component nằm ở `src/components/DropDown/index.tsx`. Hỗ 
 
 - Có thể truyền ReactNode cho label để custom giao diện item.
 - Sử dụng className để tuỳ chỉnh style cho menu hoặc nút.
+
+## Card Component Documentation
+
+### Description
+
+The `Card` component displays product information including image, title, price, old price, rating, discount badge, and interactive icons (Favorite, Search, Cart).
+
+### Props
+
+- `IMG?: string` — Product image URL.
+- `title?: string` — Product name.
+- `price?: string` — Current price.
+- `oldPrice?: string` — Old price (optional, will show as strikethrough).
+- `rating?: number` — Number of filled stars (0–5).
+- `discount?: string` — Discount badge text (e.g. "80%").
+
+### Features
+
+- Shows product image and details.
+- Displays rating as filled and empty stars.
+- Shows discount badge at top-left.
+- Favorite icon always visible; Search and Cart icons animate in on hover.
+- Responsive and accessible (uses `alt` for images, `aria-label` for icons).
+- Uses Tailwind CSS for layout and transitions.
+
+### Usage Example
+
+```tsx
+import Card from "./components/Card";
+
+<Card
+  IMG="https://via.placeholder.com/200x200?text=Product"
+  title="Shake & Spin Lion"
+  price="750.000₫"
+  oldPrice="4.500.000₫"
+  rating={4}
+  discount="80%"
+/>;
+```
+
+### Notes
+
+- Default values are provided for all props.
+- Animation for Search and Cart icons uses Tailwind CSS transitions.
+- You can customize icons and styles via props or override
+
+## Select Component Documentation
+
+### Description
+
+The `Select` component is a reusable dropdown/select input supporting labels, options, placeholders, accessibility, and custom styling.
+
+### Props
+
+- `label?: string` — Optional. Label displayed before the select.
+- `options?: Array<{ value: string; label: string }>` — Optional. List of options to render.
+- `placeholder?: string` — Optional. Placeholder option shown at the top.
+- All standard HTML select props (e.g. `value`, `onChange`, `disabled`, `className`, `name`, `id`, etc.)
+
+### Features
+
+- Renders a select dropdown with options.
+- Supports all standard select attributes via props.
+- Forwards `ref` for integration with forms and libraries.
+- Accessible: uses `label` and `id` for screen readers.
+- Customizable via `className` and Tailwind CSS.
+
+### Usage Example
+
+```tsx
+import Select from "./components/Select";
+
+<Select
+  label="Category"
+  options={[
+    { value: "toys", label: "Toys" },
+    { value: "books", label: "Books" },
+    { value: "clothes", label: "Clothes" },
+  ]}
+  placeholder="Choose category"
+  value={selectedCategory}
+  onChange={handleChange}
+  id="category"
+/>;
+```
+
+### Notes
+
+- Always provide a unique `id` when using `label` for accessibility.
+- If `placeholder` is set, it will be rendered as a disabled option at the top.
+- You can style the select using Tailwind CSS or custom classes.
+- Supports forwarding refs
+
+## TextField Component Documentation
+
+### Description
+
+The `TextField` component is a reusable input field supporting multiple variants, labels, accessibility, and custom styling.
+
+### Props
+
+- `variant?: "outlined" | "filled" | "standard"` — Optional. Controls the visual style of the input (default: `"outlined"`).
+- `label?: string` — Optional. Label displayed before the input.
+- All standard HTML input props (e.g. `type`, `value`, `onChange`, `placeholder`, `disabled`, `className`, `name`, `id`, etc.)
+
+### Features
+
+- Supports all standard input attributes via props.
+- Forwards `ref` for integration with forms and libraries.
+- Accessible: uses `label` and `id` for screen readers.
+- Customizable via `className` and Tailwind CSS.
+- Variant prop applies different styles (`outlined`, `filled`, `standard`).
+
+### Usage Example
+
+```tsx
+import TextField from "./components/TextField";
+
+<TextField
+  type="text"
+  label="Full Name"
+  placeholder="Enter your name"
+  value={name}
+  onChange={handleChange}
+  variant="outlined"
+  className="mb-4"
+  id="fullName"
+/>;
+```
+
+### Notes
+
+- Always provide a unique `id` when using `label` for accessibility.
+- You can style the input using Tailwind CSS or custom classes.
+- Supports forwarding refs for advanced use cases.
+- Add custom CSS classes for each variant (`textfield-outlined`, `textfield-filled`, `textfield-standard`).
