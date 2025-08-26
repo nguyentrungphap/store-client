@@ -76,7 +76,7 @@ const Navbar = () => {
         </button>
         <button
           className="cursor-pointer"
-          onClick={() => useModalStore.getState().showModal("login")}
+          onClick={() => useModalStore.getState().showModal("authentication")}
         >
           <Person2OutlinedIcon className="w-icon h-icon" />
         </button>

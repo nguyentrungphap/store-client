@@ -406,3 +406,46 @@ import Img3 from "@/assets/slider3.jpg";
 - You can pass any React node as a child (not just images).
 - Dots are keyboard accessible and support custom styling.
 - Use Tailwind CSS or your own classes for further customization.
+
+## ModalRoot & Authentication Modal Documentation
+
+### ModalRoot
+
+- `ModalRoot` is a global modal manager component (`src/components/ModalRoot/index.tsx`).
+- It listens to the Zustand modal store (`src/store/modalStore.ts`) and renders the correct modal component based on the current modal state.
+- Place `<ModalRoot />` at the root of your app (e.g., in `App.tsx` or your main layout) so it can render modals globally.
+- To show a modal, call `useModalStore.getState().showModal('authentication', { ...props })` from anywhere in your app.
+- Register modal components in `MODAL_COMPONENTS` inside `ModalRoot` for dynamic rendering.
+
+### Authentication Modal
+
+- The `Authentication` component (`src/components/ModalRoot/Authentication/index.tsx`) manages three authentication views: Login, Register, and Forgot.
+- It uses local state (`active`) to switch between these views.
+- The overlay and centering are handled by `ModalRoot`; `Authentication` only renders the modal content.
+- The close button calls the `onClose` prop, which hides the modal via the modal store.
+
+### Login, Register, Forgot Modals
+
+- `LoginModal`, `RegisterModal`, and `ForgotModal` are child components of `Authentication`.
+- Each receives `onClose` and navigation callbacks (`onSwitchToLogin`, `onSwitchToRegister`, `onSwitchToForgot`) from `Authentication`.
+- Use these callbacks to switch between authentication views by updating the `active` state in `Authentication`.
+
+### Usage Example
+
+```tsx
+// Show the authentication modal from anywhere in your app:
+import { useModalStore } from "@/store/modalStore";
+
+const handleLoginClick = () => {
+  useModalStore.getState().showModal("authentication");
+};
+
+// In your main layout or App.tsx:
+<ModalRoot />;
+```
+
+### Notes
+
+- Only one modal is shown at a time.
+- Pass additional props to modals via the second argument of `showModal`.
+- All modal content should be rendered inside the modal component; do not duplicate

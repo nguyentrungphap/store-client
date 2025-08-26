@@ -6,11 +6,11 @@ import DialogActions from "@mui/material/DialogActions";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
+import Sidebar from "../Sidebar";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
-import Sidebar from "../Sidebar";
 
-interface RegisterModalProps {
+interface ForgotModalProps {
   open?: boolean;
   onClose: () => void;
   onSwitchToRegister?: () => void;
@@ -20,19 +20,20 @@ interface RegisterModalProps {
   modal?: string | null;
 }
 
-const RegisterModal: React.FC<RegisterModalProps> = ({
+const ForgotModal: React.FC<ForgotModalProps> = ({
   open = true,
   onClose,
-  onSwitchToLogin,
-  onSwitchToForgot,
   onSwitchToRegister,
+  onSwitchToForgot,
+  onSwitchToLogin,
   active,
 }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleRegister = () => {
-    // TODO: Add Register logic here
+  const handleForgot = () => {
+    // TODO: Add Forgot logic here
     onClose();
   };
 
@@ -41,7 +42,7 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
       <div className="relative p-3">
         <div className="flex flex-row-reverse">
           <div className="w-[70%]">
-            <DialogTitle>Đăng ký</DialogTitle>
+            <DialogTitle>Quên mật khẩu</DialogTitle>
             <DialogContent>
               <TextField
                 autoFocus
@@ -53,17 +54,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <TextField
-                margin="dense"
-                label="Mật khẩu"
-                type="password"
-                fullWidth
-                variant="outlined"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
               <Button
-                onClick={handleRegister}
+                onClick={handleForgot}
                 variant="contained"
                 fullWidth
                 sx={{
@@ -77,44 +69,8 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
                   "&:hover": { backgroundColor: "#444" },
                 }}
               >
-                Đăng nhập
+                Gửi
               </Button>
-              <Box sx={{ textAlign: "center", mb: 2 }}>
-                Hoặc đăng nhập bằng:
-              </Box>
-              <Box
-                sx={{
-                  display: "flex",
-                  gap: 2,
-                  justifyContent: "center",
-                  mb: 2,
-                }}
-              >
-                <Button
-                  variant="contained"
-                  startIcon={<FacebookIcon />}
-                  sx={{
-                    backgroundColor: "#3b5998",
-                    color: "#fff",
-                    minWidth: "120px",
-                    "&:hover": { backgroundColor: "#2d4373" },
-                  }}
-                >
-                  Facebook
-                </Button>
-                <Button
-                  variant="contained"
-                  startIcon={<GoogleIcon />}
-                  sx={{
-                    backgroundColor: "#db4437",
-                    color: "#fff",
-                    minWidth: "120px",
-                    "&:hover": { backgroundColor: "#c33d2e" },
-                  }}
-                >
-                  Google
-                </Button>
-              </Box>
             </DialogContent>
           </div>
           <Sidebar
@@ -136,4 +92,4 @@ const RegisterModal: React.FC<RegisterModalProps> = ({
   );
 };
 
-export default RegisterModal;
+export default ForgotModal;
