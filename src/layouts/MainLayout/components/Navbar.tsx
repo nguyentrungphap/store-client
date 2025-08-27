@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Logo from "@/assets/logo.webp";
 import DropDown, { type MenuProps } from "@/components/DropDown";
 import Person2OutlinedIcon from "@mui/icons-material/Person2Outlined";
@@ -7,9 +7,12 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import InputAnimation from "@/components/InputAnimation";
+import { Link } from "react-router-dom";
+import cx from "clsx";
 
 const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
+  const [scrolling, setScrolling] = useState<string | null>(null);
 
   const menuItems: MenuProps["items"] = [
     {
@@ -25,8 +28,32 @@ const Navbar = () => {
       key: "lienhe",
     },
   ];
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => {
+        if (e.deltaY < 0) {
+          setScrolling("up");
+        } else if (e.deltaY > 0) {
+          setScrolling("down");
+        }
+      }, 100);
+    };
+    window.addEventListener("wheel", handleWheel);
+    return () => window.removeEventListener("wheel", handleWheel);
+  }, []);
+  console.log(scrolling);
   return (
-    <div className="shadow-bottom-lg bg-white flex items-center justify-between p-4 sticky top-0 z-50 mb-3.5">
+    <div
+      className={cx(
+        "shadow-bottom-lg bg-white flex items-center justify-between p-4 sticky top-0 z-50 mb-3.5 animate-moveUpAndHide duration-300 transition-transform",
+        {
+          hidden: scrolling === "down",
+        }
+      )}
+    >
       <div className="flex items-center justify-between text-base font-bold gap-5">
         <img src={Logo} alt="Logo" className="h-15" />
         <div
@@ -38,14 +65,16 @@ const Navbar = () => {
           Trang Chủ
         </div>
         <DropDown menu={{ items: menuItems }} trigger="hover">
-          <div
-            className={`hover:text-red-500 cursor-pointer ${
-              active === "allproduct" ? "text-red-500" : ""
+          <Link
+            to="/product"
+            className={`hover:text-red-500 cursor-pointer flex items-center ${
+              active === "allproduct" ? "text-red-500 font-bold" : ""
             }`}
             onClick={() => setActive("allproduct")}
           >
-            Tất Cả Sản Phẩm <span>›</span>
-          </div>
+            <span className="text-left">Tất Cả Sản Phẩm</span>
+            <span className="ml-1">›</span>
+          </Link>
         </DropDown>
         <div
           className={`hover:text-red-500 cursor-pointer ${

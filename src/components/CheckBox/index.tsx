@@ -1,12 +1,9 @@
-import { useState } from "react";
+import React from "react";
 
 export interface CheckboxOptionType {
   value?: string;
-  isDisabled?: boolean;
-  isChecked?: boolean;
   label?: string;
-  className?: string;
-  defaultValue?: string;
+  isChecked?: boolean;
   onChange?: (checked: boolean) => void;
 }
 
@@ -19,43 +16,21 @@ interface PropsCheckBox {
 }
 
 const CheckBox = ({ menuCheckBox }: PropsCheckBox) => {
-  const [checkedArr, setCheckedArr] = useState(
-    menuCheckBox.items.map((item) => !!item.isChecked)
-  );
-
-  const handleChange = (idx: number) => {
-    setCheckedArr((prev) => {
-      const newArr = [...prev];
-      newArr[idx] = !newArr[idx];
-      // Gọi callback nếu có
-      menuCheckBox.items[idx].onChange?.(newArr[idx]);
-      console.log({ newArr });
-      return newArr;
-    });
-  };
-
   return (
     <div>
-      {menuCheckBox.items.map((item, index) => {
-        const inputId = `checkbox-${index}`;
-        return (
-          <div key={index} className={item.className}>
-            <input
-              id={inputId}
-              type="checkbox"
-              value={item.value}
-              checked={checkedArr[index]}
-              disabled={item.isDisabled}
-              onChange={() => handleChange(index)}
-            />
-            {item.label && (
-              <label htmlFor={inputId} style={{ marginLeft: 4 }}>
-                {item.label}
-              </label>
-            )}
-          </div>
-        );
-      })}
+      {menuCheckBox.items.map((item, index) => (
+        <label
+          key={item.value || index}
+          className="flex items-center gap-2 cursor-pointer"
+        >
+          <input
+            type="checkbox"
+            checked={!!item.isChecked}
+            onChange={(e) => item.onChange?.(e.target.checked)}
+          />
+          <span>{item.label}</span>
+        </label>
+      ))}
     </div>
   );
 };

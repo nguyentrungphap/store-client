@@ -12,6 +12,26 @@
       transform: rotate(180deg);
     }
   }
+  --animate-moveUpAndHide: moveUpAndHide 5s cubic-bezier(0.4, 0, 0.2, 1)
+    forwards;
+  @keyframes moveUpAndHide {
+    0% {
+      transform: translateY(100%);
+      opacity: 0;
+    }
+    60% {
+      transform: translateY(80%);
+      opacity: 0.5;
+    }
+    80% {
+      transform: translateY(60%);
+      opacity: 0.8;
+    }
+    100% {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
 }
 
 @layer utilities {

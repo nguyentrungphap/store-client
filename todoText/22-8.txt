@@ -1,2 +1,15 @@
 handleMouseEnter: di chuot vao
 handleMouseLeave : di chuot ra
+
+
+27-8
+1.add to cart backend fake tra ve 1 cartId
+
+1. tao key luu trong localstorage (cart-userId = cartId) => check co cartId thi call
+2. fake call API (get cart(userId || localstorage.cartId) => de tan trong data)
+3. vao trang MainLayout de call API
+4. Them sua xoa voi data fake (tao them fake API them xoa sua)
+5. show cart number
+
+
+6. login fake tra ve 1 userId => luu vao localstorage userId

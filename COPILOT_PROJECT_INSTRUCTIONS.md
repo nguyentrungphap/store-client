@@ -449,3 +449,74 @@ const handleLoginClick = () => {
 - Only one modal is shown at a time.
 - Pass additional props to modals via the second argument of `showModal`.
 - All modal content should be rendered inside the modal component; do not duplicate
+
+## TimeCountDown Component
+
+**Description:**
+`TimeCountDown` is a React component that displays a live countdown timer for a promotional event or flash sale.
+
+**Props:**
+
+- `startDay` (string, optional): Start date in `DD/MM/YYYY` format.
+- `startTime` (string, optional): Start time in `HH:mm:ss` format.
+- `endDay` (string, optional): End date in `DD/MM/YYYY` format.
+- `endTime` (string, optional): End time in `HH:mm:ss` format.
+
+**Features:**
+
+- Parses start and end date/time.
+- Shows status: "Chưa bắt đầu" (not started), "Đã kết thúc" (ended), or a live countdown.
+- Updates every second.
+- Accessible: uses `aria-label`, `aria-live`, and `role="timer"`.
+
+**Usage Example:**
+
+```tsx
+<TimeCountDown
+  startDay="26/08/2025"
+  startTime="20:00:00"
+  endDay="29/08/2025"
+  endTime="23:59:00"
+/>
+```
+
+---
+
+## MainProductRight Component
+
+**Description:**
+`MainProductRight` displays product details, including price, rating, color/size options, quantity selector, vouchers, and a flash sale section.
+
+**Integration with TimeCountDown:**
+
+- If the product has a `flashSale` object, it renders a banner and the `TimeCountDown` component to show the countdown for the sale.
+
+**Usage Example:**
+
+```tsx
+{
+  product.flashSale && (
+    <div className="flex items-center bg-gradient-to-l from-[#DD1829] to-[#FCC419] p-2 rounded-lg">
+      <img
+        title="Flash Sale"
+        src={product.flashSale.image}
+        alt="Flash Sale"
+        className="w-30 h-8"
+      />
+      <TimeCountDown
+        startDay={product.flashSale.startDay}
+        startTime={product.flashSale.startTime}
+        endDay={product.flashSale.endDay}
+        endTime={product.flashSale.endTime}
+      />
+    </div>
+  );
+}
+```
+
+**Note:**
+
+- `TimeCountDown` will automatically handle the countdown logic and display the correct status or time remaining.
+- All props are optional; defaults are provided for demonstration.
+
+---
