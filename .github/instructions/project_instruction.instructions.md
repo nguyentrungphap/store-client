@@ -1,3 +1,58 @@
+# Axios Instance Pattern
+
+**File:** `src/apis/axiosInstance.ts`
+
+Use this pattern to create a singleton Axios instance for all API calls:
+
+```typescript
+import axios from "axios";
+import axiosRetry from "axios-retry";
+import type {
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+  AxiosError,
+  InternalAxiosRequestConfig,
+} from "axios";
+
+const instance: AxiosInstance = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE_URL || "/api",
+  timeout: 15000,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+axiosRetry(instance, {
+  retries: 2,
+  retryDelay: axiosRetry.exponentialDelay,
+  retryCondition: (error) =>
+    axiosRetry.isNetworkOrIdempotentRequestError(error) ||
+    error.code === "ECONNABORTED",
+});
+
+// Add interceptors for request/response as needed
+
+export const api = {
+  get: <T = any>(url: string, config?: AxiosRequestConfig) =>
+    instance.get<T>(url, config),
+  post: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) =>
+    instance.post<T>(url, data, config),
+  put: <T = any>(url: string, data?: any, config?: AxiosRequestConfig) =>
+    instance.put<T>(url, data, config),
+  delete: <T = any>(url: string, config?: AxiosRequestConfig) =>
+    instance.delete<T>(url, config),
+  instance, // Expose raw instance for advanced use
+};
+
+export default api;
+```
+
+**Notes:**
+
+- Always use the exported `api` object for requests.
+- The singleton instance ensures consistent config and interceptors for all API calls.
+
 # Zustand Cart Store Pattern (with Devtools)
 
 **File:** `src/store/cart/index.ts`
