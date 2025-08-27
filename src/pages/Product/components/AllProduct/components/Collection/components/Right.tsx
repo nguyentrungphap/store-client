@@ -1,5 +1,5 @@
 import Card from "@/components/Card";
-import { products } from "@/store/data";
+import { products } from "@/apis/product/data";
 type Props = {};
 
 const CollectionRight = (props: Props) => {

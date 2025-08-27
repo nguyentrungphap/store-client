@@ -1,0 +1,13 @@
+{
+  "cart": [
+    {
+      "cartId": "cart_123",
+      "userId": "user_1",
+      "items": [
+        { "id": "p1", "name": "Product 1", "price": 100, "quantity": 2 },
+        { "id": "p2", "name": "Product 2", "price": 200, "quantity": 1 }
+      ]
+    }
+  ],
+  "users": [{ "id": "user_1", "name": "Demo User" }]
+}

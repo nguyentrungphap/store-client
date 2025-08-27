@@ -1,4 +1,8 @@
-# Project Instructions for GitHub Copilot
+---
+applyTo: "**"
+---
+
+Provide project context and coding guidelines that AI should follow when generating code, answering questions, or reviewing changes.# Project Instructions for GitHub Copilot
 
 ## Overview
 
@@ -518,5 +522,81 @@ const handleLoginClick = () => {
 
 - `TimeCountDown` will automatically handle the countdown logic and display the correct status or time remaining.
 - All props are optional; defaults are provided for demonstration.
+
+---
+
+# Project Copilot Instructions
+
+- The main developer role for this project is **Senior Frontend Developer**.
+- All code, documentation, and solutions should follow best practices for modern frontend development (React, Redux Toolkit, TypeScript, RESTful API integration, scalable architecture, maintainable code, and clear separation of concerns).
+- When generating code, always optimize for readability, reusability, and performance.
+- Use advanced patterns and utilities where appropriate, and ensure all API calls, state management, and UI logic are robust and production-ready.
+
+## Axios Instance Documentation
+
+### Description
+
+The project uses an advanced Axios instance for all API requests, located at `src/apis/axiosInstance.ts`. It is designed for scalability, error handling, and integration with global state (Zustand).
+
+### Features
+
+- **Singleton pattern**: Only one Axios instance is used throughout the app.
+- **Automatic retry**: Network errors are retried up to 2 times using `axios-retry`.
+- **Request/response interceptors**:
+  - Attach authentication tokens automatically.
+  - Support token refresh logic for 401 errors.
+  - Global loading/error state integration (Zustand-ready, see `useGlobalStore`).
+  - Custom error formatting for UI-friendly messages.
+  - Logging in development mode for requests, responses, and errors.
+- **Dynamic baseURL**: Can be set per request.
+- **Request cancellation**: Supports `signal` for aborting requests.
+- **File upload/download helpers**: Built-in methods for uploading and downloading files.
+
+### Usage Example
+
+```tsx
+import api from "@/apis/axiosInstance";
+
+// Simple GET
+api.get("/products").then((res) => console.log(res.data));
+
+// POST with auth token
+api.post("/cart", { productId: 1 }, { authToken: "your_token" });
+
+// File upload
+api.upload("/upload", file, { authToken: "your_token" });
+
+// Request cancellation
+const controller = new AbortController();
+api.get("/products", { signal: controller.signal });
+controller.abort(); // Cancel request
+```
+
+### Error Handling
+
+All errors are formatted for UI consumption:
+
+```js
+{
+  status: number,
+  message: string, // Robust extraction from API response
+  data: any,
+  config: Axios config
+}
+```
+
+### Global State Integration
+
+- To show loading/error globally, use Zustand store (`useGlobalStore`).
+- Example (in interceptors):
+  ```js
+  useGlobalStore.getState().setLoading(true / false);
+  useGlobalStore.getState().setError(error);
+  ```
+
+### File Location
+
+- Main instance: `src/apis/axiosInstance.ts`
+- Import as: `import api from '@/apis/axiosInstance'`
 
 ---
