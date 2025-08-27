@@ -3,7 +3,6 @@ import { products } from "@/apis/product/data";
 type Props = {};
 
 const CollectionRight = (props: Props) => {
-  console.log({ products });
   return (
     <div className="w-[70%] p-4 grid grid-cols-4 gap-3">
       {products.map((product) => {

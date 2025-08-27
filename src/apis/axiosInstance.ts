@@ -8,6 +8,7 @@ import type {
   AxiosError,
   InternalAxiosRequestConfig,
 } from "axios";
+import { useGlobalStore } from "@/store/globalStore";
 
 // Custom config type for advanced options
 interface CustomAxiosConfig extends AxiosRequestConfig {
@@ -34,19 +35,19 @@ const instance: AxiosInstance = axios.create({
 
 // Automatic retry for network errors
 axiosRetry(instance, {
-  retries: 2,
-  retryDelay: axiosRetry.exponentialDelay,
+  retries: 2, // Số lần thử lại tối đa là 2 lần nếu gặp lỗi mạng
+  retryDelay: axiosRetry.exponentialDelay, // Thời gian chờ giữa các lần thử lại sẽ tăng dần (kiểu exponential)
   retryCondition: (error) =>
     axiosRetry.isNetworkOrIdempotentRequestError(error) ||
-    error.code === "ECONNABORTED",
+    error.code === "ECONNABORTED", // Chỉ retry nếu là lỗi mạng hoặc lỗi timeout
 });
 
 // Request interceptor
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig & CustomAxiosConfig) => {
     // Global loading state (Zustand example)
-    // useGlobalStore.getState().setLoading(true);
-
+    useGlobalStore.getState().setLoading(true);
+    // useGlobalStore.getState().clearError();
     // Attach auth token if available
     if (config.authToken && config.headers) {
       if (typeof config.headers.set === "function") {

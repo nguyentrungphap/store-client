@@ -4,8 +4,10 @@ import Favorite from "@mui/icons-material/FavoriteBorderOutlined";
 import Search from "@mui/icons-material/SearchOutlined";
 import Cart from "@mui/icons-material/ShoppingCartOutlined";
 import StarIcon from "@mui/icons-material/Star";
+import { useCartStore } from "@/store/cart";
 
 interface CardProps {
+  id?: string;
   IMG?: string;
   title?: string;
   price?: string;
@@ -15,9 +17,23 @@ interface CardProps {
 }
 
 function Card(props: CardProps) {
-  const { IMG, title, price, oldPrice, rating, discount } = props;
+  const { id, IMG, title, price, oldPrice, rating, discount } = props;
   const [showIcons, setShowIcons] = useState(false);
+  const addItem = useCartStore((state) => state.addItem);
+  const cart = useCartStore((state) => state.cart);
+  console.log(cart);
 
+  const handleAddToCart = () => {
+    addItem({
+      id: "unique-id",
+      name: title || "Unknown Product",
+      price: parseFloat(price?.replace(/[^0-9.-]+/g, "") || "0"),
+      quantity: 1,
+    });
+  };
+  const isInCart = cart?.items.some((item) => item.id === id);
+
+  console.log({ isInCart });
   return (
     <div
       className="relative w-full max-w-xs border p-4 rounded-lg border-gray-300 bg-white hover:shadow-lg transition-shadow duration-300"
@@ -46,6 +62,12 @@ function Card(props: CardProps) {
             )
           )}
         </div>
+        <button
+          className="w-full bottom-2 left-2 bg-red-500 text-white rounded-full px-3  text-md font-bold shadow py-3"
+          onClick={handleAddToCart}
+        >
+          Thêm vào giỏ
+        </button>
       </div>
       <span className="absolute top-2 left-2 bg-red-500 px-3 py-1 text-white rounded-full text-xs font-bold shadow">
         {discount}
@@ -84,8 +106,8 @@ function Card(props: CardProps) {
           />
           <Cart
             sx={{
-              color: "black",
-              background: "#F9F9F9",
+              color: isInCart ? "white" : "black",
+              background: isInCart ? "red" : "#F9F9F9",
               borderRadius: "4px",
               paddingY: "2px",
               ":hover": {

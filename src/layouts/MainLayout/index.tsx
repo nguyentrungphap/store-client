@@ -7,7 +7,6 @@ import { useEffect } from "react";
 type Props = {};
 const MainLayout = (props: Props) => {
   const fetchCart = useCartStore((state) => state.fetchCart);
-
   useEffect(() => {
     fetchCart("user_id");
   }, [fetchCart]);

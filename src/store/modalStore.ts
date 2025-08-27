@@ -1,4 +1,5 @@
 import { create } from "zustand";
+import { devtools } from "zustand/middleware";
 
 export type ModalType = string | null;
 export type ModalProps = Record<string, any>;
@@ -10,9 +11,11 @@ interface ModalState {
   hideModal: () => void;
 }
 
-export const useModalStore = create<ModalState>((set) => ({
-  modal: null,
-  props: {},
-  showModal: (modal, props = {}) => set({ modal, props }),
-  hideModal: () => set({ modal: null, props: {} }),
-}));
+export const useModalStore = create<ModalState>()(
+  devtools((set) => ({
+    modal: null,
+    props: {},
+    showModal: (modal, props = {}) => set({ modal, props }),
+    hideModal: () => set({ modal: null, props: {} }),
+  }))
+);

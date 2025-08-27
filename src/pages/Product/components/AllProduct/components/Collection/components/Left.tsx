@@ -55,8 +55,6 @@ const CollectionLeft = () => {
       </div>
     );
   };
-  console.log({ checkedArr });
-
   return (
     <div className="w-[30%]">
       {renderCheckedItems()}

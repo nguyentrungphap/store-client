@@ -9,11 +9,13 @@ import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import InputAnimation from "@/components/InputAnimation";
 import { Link } from "react-router-dom";
 import cx from "clsx";
+import { useCartStore } from "@/store/cart";
 
 const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
   const [scrolling, setScrolling] = useState<string | null>(null);
-
+  const cart = useCartStore((state) => state.cart);
+  console.log({ cart });
   const menuItems: MenuProps["items"] = [
     {
       label: "Trang Chủ",
@@ -44,7 +46,6 @@ const Navbar = () => {
     window.addEventListener("wheel", handleWheel);
     return () => window.removeEventListener("wheel", handleWheel);
   }, []);
-  console.log(scrolling);
   return (
     <div
       className={cx(
@@ -118,7 +119,7 @@ const Navbar = () => {
         <button className="relative cursor-pointer">
           <ShoppingBagOutlinedIcon className="w-icon h-icon" />
           <div className="absolute top-[-3px] right-[-3px] bg-red-500 text-white rounded-full text-xs px-1">
-            2
+            {cart?.items.length || 0}
           </div>
         </button>
       </div>
