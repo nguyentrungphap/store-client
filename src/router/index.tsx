@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
             Component: AllProduct,
           },
           {
-            path: "id",
+            path: ":id",
             Component: DetailsProduct,
           },
         ],

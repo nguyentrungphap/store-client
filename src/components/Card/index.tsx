@@ -5,52 +5,46 @@ import Search from "@mui/icons-material/SearchOutlined";
 import Cart from "@mui/icons-material/ShoppingCartOutlined";
 import StarIcon from "@mui/icons-material/Star";
 import { useCartStore } from "@/store/cart";
+import type { IProduct } from "@/store/product";
+import { displayPrice } from "@/utils/currency";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
-interface CardProps {
-  id?: string;
-  IMG?: string;
-  title?: string;
-  price?: string;
-  oldPrice?: string;
-  rating?: number;
-  discount?: string;
-}
-
-function Card(props: CardProps) {
-  const { id, IMG, title, price, oldPrice, rating, discount } = props;
+interface Props
+  extends Pick<
+    IProduct,
+    "id" | "image" | "name" | "price" | "oldPrice" | "rating" | "discount"
+  > {}
+function Card(props: Props) {
+  const { id, image, name, price, oldPrice, rating, discount } = props;
   const [showIcons, setShowIcons] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
   const cart = useCartStore((state) => state.cart);
-  console.log(cart);
+  const navigate = useNavigate();
 
   const handleAddToCart = () => {
     addItem({
-      id: "unique-id",
-      name: title || "Unknown Product",
-      price: parseFloat(price?.replace(/[^0-9.-]+/g, "") || "0"),
+      id: id,
+      name: name,
+      price: price,
       quantity: 1,
     });
+    toast.success("Thêm thành công!");
   };
   const isInCart = cart?.items.some((item) => item.id === id);
 
-  console.log({ isInCart });
-  return (
-    <div
-      className="relative w-full max-w-xs border p-4 rounded-lg border-gray-300 bg-white hover:shadow-lg transition-shadow duration-300"
-      onMouseEnter={() => setShowIcons(true)}
-      onMouseLeave={() => setShowIcons(false)}
-    >
-      <img
-        src={IMG}
-        alt={title}
-        className="rounded-lg mb-2 w-full object-cover h-48"
-      />
-      <div className="mb-2">
-        <p className="font-semibold text-lg mb-1 text-center">{title}</p>
+  const renderContent = () => {
+    return (
+      <div className="mb-2 h-[84px] max-h-[84px]">
+        <p className="font-semibold text-lg mb-1 text-center truncate">
+          {name}
+        </p>
         <div className="flex items-center gap-2 mb-1 justify-center">
-          <span className="text-red-500 font-bold">{price}</span>
+          <span className="text-red-500 font-bold">{displayPrice(price)}</span>
           {oldPrice && (
-            <span className="text-gray-400 line-through">{oldPrice}</span>
+            <span className="text-gray-400 line-through">
+              {displayPrice(oldPrice)}
+            </span>
           )}
         </div>
         <div className="flex justify-center gap-1">
@@ -62,13 +56,34 @@ function Card(props: CardProps) {
             )
           )}
         </div>
-        <button
-          className="w-full bottom-2 left-2 bg-red-500 text-white rounded-full px-3  text-md font-bold shadow py-3"
-          onClick={handleAddToCart}
-        >
-          Thêm vào giỏ
-        </button>
       </div>
+    );
+  };
+
+  return (
+    <div
+      className="relative w-full max-w-xs border p-4 rounded-lg border-gray-300 bg-white hover:shadow-lg transition-shadow duration-300"
+      onMouseEnter={() => setShowIcons(true)}
+      onMouseLeave={() => setShowIcons(false)}
+      onClick={() => {
+        navigate(`/product/${id}`);
+      }}
+    >
+      <img
+        src={image}
+        alt={name}
+        className="rounded-lg mb-2 w-full object-cover h-48"
+      />
+      {renderContent()}
+      <button
+        className="w-full cursor-pointer bottom-2 left-2 bg-red-500 text-white rounded-full px-3  text-md font-bold shadow py-3"
+        onClick={(e) => {
+          e.stopPropagation();
+          handleAddToCart();
+        }}
+      >
+        Thêm vào giỏ
+      </button>
       <span className="absolute top-2 left-2 bg-red-500 px-3 py-1 text-white rounded-full text-xs font-bold shadow">
         {discount}
       </span>
@@ -117,6 +132,10 @@ function Card(props: CardProps) {
               },
             }}
             aria-label="Add to cart"
+            onClick={(e) => {
+              e.stopPropagation();
+              handleAddToCart();
+            }}
           />
         </div>
       </div>

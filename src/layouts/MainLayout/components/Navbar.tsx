@@ -15,7 +15,6 @@ const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
   const [scrolling, setScrolling] = useState<string | null>(null);
   const cart = useCartStore((state) => state.cart);
-  console.log({ cart });
   const menuItems: MenuProps["items"] = [
     {
       label: "Trang Chủ",
@@ -56,15 +55,18 @@ const Navbar = () => {
       )}
     >
       <div className="flex items-center justify-between text-base font-bold gap-5">
-        <img src={Logo} alt="Logo" className="h-15" />
-        <div
+        <Link to="/">
+          <img src={Logo} alt="Logo" className="h-15" />
+        </Link>
+        <Link
+          to="/"
           className={`hover:text-red-500 cursor-pointer ${
             active === "trangchu" ? "text-red-500" : ""
           }`}
           onClick={() => setActive("trangchu")}
         >
           Trang Chủ
-        </div>
+        </Link>
         <DropDown menu={{ items: menuItems }} trigger="hover">
           <Link
             to="/product"
@@ -116,12 +118,12 @@ const Navbar = () => {
             2
           </div>
         </button>
-        <button className="relative cursor-pointer">
+        <Link to="/cart" className="relative cursor-pointer">
           <ShoppingBagOutlinedIcon className="w-icon h-icon" />
           <div className="absolute top-[-3px] right-[-3px] bg-red-500 text-white rounded-full text-xs px-1">
             {cart?.items.length || 0}
           </div>
-        </button>
+        </Link>
       </div>
     </div>
   );

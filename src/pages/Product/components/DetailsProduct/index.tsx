@@ -1,12 +1,11 @@
-import React from "react";
-import MainProduct from "./components/MainProduct";
+import Product from "./components/Product";
 
 type Props = {};
 
 const DetailsProduct = (props: Props) => {
   return (
     <div>
-      <MainProduct />
+      <Product />
     </div>
   );
 };

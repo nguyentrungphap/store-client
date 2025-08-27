@@ -34,7 +34,7 @@ const infoList = [
   { label: "Dòng sản phẩm", value: product.category },
 ];
 
-const MainProductRight = () => {
+const Right = () => {
   const [quantity, setQuantity] = useState(1);
 
   const handleQuantityChange = (delta: number) => {
@@ -180,4 +180,4 @@ const MainProductRight = () => {
   );
 };
 
-export default MainProductRight;
+export default Right;
