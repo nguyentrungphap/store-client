@@ -57,4 +57,35 @@
     background-position: center;
     background-repeat: no-repeat;
   }
+  /* Hide scrollbars and prevent scrolling */
+  .hide-scroll {
+    overflow: hidden !important;
+  }
+
+  /* For body or html usage */
+  body.hide-scroll,
+  html.hide-scroll {
+    overflow: hidden !important;
+  }
+
+  /* For hiding scrollbars but still allowing scroll (optional) */
+  .hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
+
+  /* Hide scrollbar but allow scrolling */
+  body,
+  html {
+    overflow: auto !important;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+  }
+  body::-webkit-scrollbar,
+  html::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera */
+  }
 }

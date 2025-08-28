@@ -1,3 +1,33 @@
+# Modal Overlay Pattern (Click background to close, content stays open)
+
+**Example usage in React:**
+
+```tsx
+const [isOpen, setIsOpen] = useState(false);
+
+<div
+  className={`fixed inset-0 bg-amber-300 z-50 flex items-center justify-center transition-all duration-300 ${
+    isOpen ? "block" : "hidden"
+  }`}
+  onClick={() => setIsOpen(false)}
+>
+  <div onClick={(e) => e.stopPropagation()}>
+    {/* Modal content here, e.g. <Favorite /> */}
+  </div>
+</div>;
+```
+
+**How it works:**
+
+- Clicking the background (amber-300) will close the modal/overlay.
+- Clicking inside the modal content will not close the overlay, thanks to `event.stopPropagation()`.
+
+**Best practices:**
+
+- Use `fixed inset-0` for full-screen overlay.
+- Use `flex items-center justify-center` to center modal content.
+- Use `onClick` on the overlay for closing, and `onClick={e => e.stopPropagation()}` on the modal content to prevent closing when interacting inside.
+
 # Axios Instance Pattern
 
 **File:** `src/apis/axiosInstance.ts`

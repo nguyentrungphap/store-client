@@ -2,21 +2,24 @@
   "cart": {
     "cartId": "cart_123",
     "userId": "user_1",
+    "createdAt": "2025-08-28T10:00:00Z",
+    "updatedAt": "2025-08-28T10:05:00Z",
     "items": [
-      { "id": "p1", "name": "Product 1", "price": 100, "quantity": 2 },
-      { "id": "p2", "name": "Product 2", "price": 200, "quantity": 1 }
+      { "id": "p1", "quantity": 2, "color": "black", "size": "M" },
+      { "id": "p2", "quantity": 1, "color": "white", "size": "S" }
     ]
   },
   "users": [{ "id": "user_1", "name": "Demo User" }],
   "products": [
     {
       "id": "p1",
-      "image": "https://example.com/product1.jpg",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-0a0fde285dd94454980816865357dd2a.jpg?v=1694681170033",
       "name": "Tai nghe Bluetooth",
       "price": 500000,
       "oldPrice": 700000,
       "rating": 4.5,
       "discount": "28%",
+      "stock": 10,
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -24,12 +27,13 @@
     },
     {
       "id": "p2",
-      "image": "https://example.com/product2.jpg",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-c5996a88da1a49a2b87a36e93d27ae0c.jpg?v=1694681068693",
       "name": "Điện thoại Samsung Galaxy A15",
       "price": 4500000,
       "oldPrice": 5000000,
       "rating": 4.2,
       "discount": "10%",
+      "stock": 5,
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -37,12 +41,13 @@
     },
     {
       "id": "p3",
-      "image": "https://example.com/product3.jpg",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-607ba543e4c958ae05442a348c0db.jpg?v=1694679790940",
       "name": "Laptop Asus VivoBook 14",
       "price": 12500000,
       "oldPrice": 15000000,
       "rating": 4.8,
       "discount": "17%",
+      "stock": 8,
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -50,12 +55,13 @@
     },
     {
       "id": "p4",
-      "image": "https://example.com/product4.jpg",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-96a88da1a49a2b87a36e93d27ae0c.jpg?v=1694681068693",
       "name": "Bàn phím cơ Keychron K2",
       "price": 1900000,
       "oldPrice": 2200000,
       "rating": 4.6,
       "discount": "14%",
+      "stock": 12,
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -63,12 +69,13 @@
     },
     {
       "id": "p5",
-      "image": "https://example.com/product5.jpg",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-fde285dd94454980816865357dd2a.jpg?v=1694681170033",
       "name": "Chuột Logitech G304",
       "price": 850000,
       "oldPrice": 1000000,
       "rating": 4.4,
       "discount": "15%",
+      "stock": 20,
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]

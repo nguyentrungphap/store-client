@@ -1,12 +1,17 @@
+import Breadcrumb from "@/components/Breadcrumb";
 import { Outlet } from "react-router-dom";
-import Breadcrumb from "./components/Breadcrumb";
+import BannerImg from "@/assets/main_collection_breadcrumb_bg.webp";
 
 type Props = {};
 
 const Product = (props: Props) => {
   return (
     <div>
-      <Breadcrumb />
+      <Breadcrumb
+        title="Sản phẩm"
+        subtitle="Tất cả sản phẩm"
+        image={BannerImg}
+      />
       <Outlet />
     </div>
   );

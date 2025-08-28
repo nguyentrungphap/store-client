@@ -2,8 +2,9 @@ import Navbar from "./components/Navbar";
 import { Outlet } from "react-router-dom";
 import Footer from "./components/Footer";
 import { useCartStore } from "@/store/cart";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useProductStore } from "@/store/product";
+import Favorite from "@/components/Favorite";
 
 type Props = {};
 const MainLayout = (props: Props) => {
@@ -13,15 +14,23 @@ const MainLayout = (props: Props) => {
     fetchCart("user_id");
     fetchProducts();
   }, [fetchCart, fetchProducts]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   return (
-    <div className="font-oswald">
-      <Navbar />
+    <div className="font-oswald relative ">
+      <Navbar setIsFavorite={setIsFavorite} />
       <Outlet />
       <Footer />
-      <button>them</button>
-      <button>sua</button>
-      <button>xoa</button>
+      <div
+        className={`fixed inset-0 backdrop-blur-sm bg-black/10 z-50 flex items-center justify-center transition-all duration-300 ${
+          isFavorite ? "block" : "hidden"
+        }`}
+        onClick={() => setIsFavorite(false)}
+      >
+        <div onClick={(e) => e.stopPropagation()} className="w-full">
+          <Favorite />
+        </div>
+      </div>
     </div>
   );
 };

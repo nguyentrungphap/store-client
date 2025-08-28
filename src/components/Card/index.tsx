@@ -28,6 +28,8 @@ function Card(props: Props) {
       name: name,
       price: price,
       quantity: 1,
+      color: "",
+      size: "",
     });
     toast.success("Thêm thành công!");
   };
