@@ -15,11 +15,15 @@ const FormFooter = () => {
         <span className="text-gray-600">Để nhận những ưu đãi đặc biệt</span>
       </div>
       <form className="flex" onSubmit={handleSubmit}>
-        <label htmlFor="footer-email" className="sr-only">
+        <label htmlFor ="footer-email" className="sr-only">
           Email
         </label>
 
         <InputAnimation
+          id="footer-email"
+          name="email"
+          type="email"
+          aria-required="true"
           placeholders={["Nhập địa chỉ email của bạn...", "Bạn cần tư vấn?"]}
           animationSpeed={50}
           intervalTime={4000}

@@ -9,21 +9,33 @@ import type { IProduct } from "@/store/product";
 import { displayPrice } from "@/utils/currency";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { useFavoriteStore } from "@/store/favorite";
 
 interface Props
   extends Pick<
     IProduct,
-    "id" | "image" | "name" | "price" | "oldPrice" | "rating" | "discount"
+    | "id"
+    | "image"
+    | "name"
+    | "price"
+    | "oldPrice"
+    | "rating"
+    | "discount"
+    | "category"
   > {}
 function Card(props: Props) {
-  const { id, image, name, price, oldPrice, rating, discount } = props;
+  const { id, image, name, price, oldPrice, rating, discount, category } =
+    props;
   const [showIcons, setShowIcons] = useState(false);
-  const addItem = useCartStore((state) => state.addItem);
   const cart = useCartStore((state) => state.cart);
+  const favorite = useFavoriteStore((state) => state.favorites);
+  const addCartItem = useCartStore((state) => state.addItem);
+  const addFavoriteItem = useFavoriteStore((state) => state.addItem);
+  const removeFavoriteItem = useFavoriteStore((state) => state.removeItem);
   const navigate = useNavigate();
 
   const handleAddToCart = () => {
-    addItem({
+    addCartItem({
       id: id,
       name: name,
       price: price,
@@ -33,7 +45,19 @@ function Card(props: Props) {
     });
     toast.success("Thêm thành công!");
   };
+  const handleAddToFavorite = () => {
+    if (!isInFavori) {
+      addFavoriteItem({
+        idProduct: id,
+      });
+      toast.success("Thêm thành công!");
+    } else {
+      removeFavoriteItem(id);
+      toast.success("Xóa thành công!");
+    }
+  };
   const isInCart = cart?.items.some((item) => item.id === id);
+  const isInFavori = favorite?.items.some((item) => item.idProduct === id);
 
   const renderContent = () => {
     return (
@@ -87,18 +111,22 @@ function Card(props: Props) {
         Thêm vào giỏ
       </button>
       <span className="absolute top-2 left-2 bg-red-500 px-3 py-1 text-white rounded-full text-xs font-bold shadow">
-        {discount}
+        {discount}%
       </span>
       <div className="absolute top-2 right-2 flex flex-col gap-2 items-end p-3">
         <Favorite
           sx={{
-            color: "black",
-            background: "#F9F9F9",
+            color: isInFavori ? "white" : "black",
+            background: isInFavori ? "red" : "#F9F9F9",
             borderRadius: "4px",
             paddingY: "2px",
             ":hover": { color: "white", cursor: "pointer", background: "red" },
           }}
           aria-label="Add to favorite"
+          onClick={(e) => {
+            e.stopPropagation();
+            handleAddToFavorite();
+          }}
         />
         <div
           className={`transition-all duration-500 flex flex-col gap-2 ${

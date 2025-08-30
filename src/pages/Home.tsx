@@ -8,6 +8,7 @@ const Home = () => {
   const renderProduct = (product: any) => {
     return (
       <Card
+      key={product.id}
         id={product.id}
         image={product.image}
         name={product.name}

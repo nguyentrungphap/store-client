@@ -44,7 +44,6 @@ const Cart = (props: Props) => {
       productSnapshot: products.find((p) => p.id === item.id),
     };
   });
-  console.log(items);
   return (
     <div>
       <Breadcrumb
@@ -61,6 +60,7 @@ const Cart = (props: Props) => {
           <div className="w-[75%]">
             {items.map((item) => (
               <CartItem
+              key={item.id}
                 image={item.productSnapshot?.image}
                 name={item.productSnapshot?.name}
                 price={item.productSnapshot?.price || 0}

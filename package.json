@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "tailwind:init": "tailwindcss init -p"
+    "tailwind:init": "tailwindcss init -p",
+    "start": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

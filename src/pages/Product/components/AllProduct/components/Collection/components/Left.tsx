@@ -1,35 +1,48 @@
+import { useMemo, useCallback, useState, useEffect } from "react";
 import CheckBox from "@/components/CheckBox";
-import { useState } from "react";
 
 const brandItems = [
-  { value: "brand1", label: "Thương hiệu 1" },
-  { value: "brand2", label: "Thương hiệu 2" },
-  { value: "brand3", label: "Thương hiệu 3" },
-  { value: "brand4", label: "Thương hiệu 4" },
-  { value: "brand5", label: "Thương hiệu 5" },
+  { value: "Electronics", label: "Electronics" },
+  { value: "Baby", label: "Baby" },
+  { value: "Kids", label: "Kids" },
+  { value: "Boys", label: "Boys" },
+  { value: "Girls", label: "Girls" },
 ];
 
-const CollectionLeft = () => {
-  const [checkedArr, setCheckedArr] = useState<{ [key: string]: string }>({});
+interface CheckedItem {
+  category: string;
+  value: string;
+}
+interface Props {
+  setListChecked: (list: CheckedItem[]) => void;
+}
+const CollectionLeft = ({ setListChecked }: Props) => {
+  const [checkedArr, setCheckedArr] = useState<CheckedItem[]>([]);
 
-  const handleCheckChange = (
-    value: string,
-    checked: boolean,
-    label: string
-  ) => {
-    setCheckedArr((prev) => {
-      const newArr = { ...prev };
-      if (checked) {
-        newArr[value] = label;
-      } else {
-        delete newArr[value];
-      }
-      return newArr;
-    });
-  };
+  // cập nhật state khi check/uncheck
+  const handleCheckChange = useCallback(
+    (category: string, checked: boolean) => {
+      setCheckedArr((prev) => {
+        if (checked) {
+          if (!prev.some((item) => item.category === category)) {
+            return [...prev, { category, value: category }];
+          }
+          return prev;
+        } else {
+          return prev.filter((item) => item.category !== category);
+        }
+      });
+    },
+    [setCheckedArr]
+  );
 
-  const renderCheckedItems = () => {
-    if (Object.keys(checkedArr).length === 0) return null;
+  // mỗi lần checkedArr thay đổi thì update listChecked
+  useEffect(() => {
+    setListChecked(checkedArr);
+  }, [checkedArr, setListChecked]);
+
+  const renderCheckedItems = useMemo(() => {
+    if (checkedArr.length === 0) return null;
 
     return (
       <div>
@@ -37,36 +50,37 @@ const CollectionLeft = () => {
           <h2 className="text-2xl font-bold">Bạn đã chọn:</h2>
           <span
             className="text-gray-500 cursor-pointer"
-            onClick={() => setCheckedArr({})}
+            onClick={() => setCheckedArr([])}
           >
             Bỏ hết
           </span>
         </div>
         <div>
-          {Object.values(checkedArr).map((label) => (
+          {checkedArr.map((item, index) => (
             <span
-              key={label}
+              key={index}
               className="inline-block bg-gray-200 text-gray-800 px-3 py-1 rounded-full mr-2 mb-2"
             >
-              {label}
+              {item.category}
             </span>
           ))}
         </div>
       </div>
     );
-  };
+  }, [checkedArr, setCheckedArr]);
+
   return (
     <div className="w-[30%]">
-      {renderCheckedItems()}
+      {renderCheckedItems}
       <div>
         <h2 className="text-2xl font-bold">Thương hiệu sản phẩm</h2>
         <CheckBox
           menuCheckBox={{
             items: brandItems.map((item) => ({
               ...item,
-              isChecked: !!checkedArr[item.value],
+              isChecked: checkedArr.some((c) => c.category === item.value),
               onChange: (checked: boolean) =>
-                handleCheckChange(item.value, checked, item.label),
+                handleCheckChange(item.value, checked),
             })),
           }}
         />

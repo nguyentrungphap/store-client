@@ -66,12 +66,12 @@ instance.interceptors.request.use(
     }
     // Logging (dev only)
     if (import.meta.env.DEV) {
-      console.log(
-        "[Axios Request]",
-        config.method?.toUpperCase(),
-        config.url,
-        config
-      );
+      // console.log(
+      //   "[Axios Request]",
+      //   config.method?.toUpperCase(),
+      //   config.url,
+      //   config
+      // );
     }
     return config;
   },
@@ -84,12 +84,12 @@ instance.interceptors.response.use(
     // useGlobalStore.getState().setLoading(false);
     // Logging (dev only)
     if (import.meta.env.DEV) {
-      console.log(
-        "[Axios Response]",
-        response.status,
-        response.config.url,
-        response.data
-      );
+      // console.log(
+      //   "[Axios Response]",
+      //   response.status,
+      //   response.config.url,
+      //   response.data
+      // );
     }
     return response;
   },

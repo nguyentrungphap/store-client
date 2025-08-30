@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 
 interface InputAnimationProps {
+  id?: string;
+  name?: string;
+  type?: string;
   placeholders: string[];
   animationSpeed?: number;
   intervalTime?: number;
@@ -8,6 +11,9 @@ interface InputAnimationProps {
 }
 const InputAnimation = (props: InputAnimationProps) => {
   const {
+    id,
+    name,
+    type = "text",
     placeholders,
     animationSpeed = 40,
     intervalTime = 3000,
@@ -47,7 +53,9 @@ const InputAnimation = (props: InputAnimationProps) => {
 
   return (
     <input
-      type="text"
+      id={id}
+      name={name}
+      type={type}
       placeholder={animatedPlaceholder}
       className={` bg-white text-black py-2 px-4 focus:outline-none focus:ring-0 focus:border-gray-300 transition-all duration-300 ${className}`}
     />

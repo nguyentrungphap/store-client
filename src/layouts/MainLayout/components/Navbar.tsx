@@ -11,10 +11,8 @@ import { Link } from "react-router-dom";
 import cx from "clsx";
 import { useCartStore } from "@/store/cart";
 
-interface propNavbar {
-  setIsFavorite: React.Dispatch<React.SetStateAction<boolean>>;
-}
-const Navbar = ({ setIsFavorite }: propNavbar) => {
+
+const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
   const [scrolling, setScrolling] = useState<string | null>(null);
   const cart = useCartStore((state) => state.cart);
@@ -117,7 +115,6 @@ const Navbar = ({ setIsFavorite }: propNavbar) => {
         </button>
         <button
           className="relative cursor-pointer"
-          onClick={() => setIsFavorite(true)}
         >
           <FavoriteBorderOutlinedIcon className="w-icon h-icon" />
           <div className="absolute top-[-3px] right-[-3px] bg-red-500 text-white rounded-full text-xs px-1">

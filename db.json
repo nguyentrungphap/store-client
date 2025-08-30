@@ -18,8 +18,9 @@
       "price": 500000,
       "oldPrice": 700000,
       "rating": 4.5,
-      "discount": "28%",
+      "discount": 28,
       "stock": 10,
+      "category": "Electronics",
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -32,8 +33,9 @@
       "price": 4500000,
       "oldPrice": 5000000,
       "rating": 4.2,
-      "discount": "10%",
+      "discount": 10,
       "stock": 5,
+      "category": "Baby",
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -46,8 +48,9 @@
       "price": 12500000,
       "oldPrice": 15000000,
       "rating": 4.8,
-      "discount": "17%",
+      "discount": 17,
       "stock": 8,
+      "category": "Kids",
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -60,8 +63,9 @@
       "price": 1900000,
       "oldPrice": 2200000,
       "rating": 4.6,
-      "discount": "14%",
+      "discount": 14,
       "stock": 12,
+      "category": "Boys",
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
@@ -74,12 +78,20 @@
       "price": 850000,
       "oldPrice": 1000000,
       "rating": 4.4,
-      "discount": "15%",
+      "discount": 15,
       "stock": 20,
+      "category": "Girls",
       "options": {
         "color": ["black", "white"],
         "size": ["S", "M", "L"]
       }
     }
-  ]
+  ],
+  "favorite": {
+    "items": [
+      { "idProduct": "p1" },
+      { "idProduct": "p2" },
+      { "idProduct": "p5" }
+    ]
+  }
 }

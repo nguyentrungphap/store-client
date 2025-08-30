@@ -7,6 +7,7 @@ import AllProduct from "@/pages/Product/components/AllProduct";
 import DetailsProduct from "@/pages/Product/components/DetailsProduct";
 import Cart from "@/pages/Cart";
 import Checkout from "@/pages/Checkout";
+import Favorite from "@/pages/Favorite";
 
 export const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ export const router = createBrowserRouter([
       {
         path: "checkout",
         Component: Checkout,
+      },
+      {
+        path: "favorite",
+        Component: Favorite,
       },
     ],
   },
