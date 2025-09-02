@@ -10,12 +10,13 @@ import InputAnimation from "@/components/InputAnimation";
 import { Link } from "react-router-dom";
 import cx from "clsx";
 import { useCartStore } from "@/store/cart";
-
+import { useFavoriteStore } from "@/store/favorite";
 
 const Navbar = () => {
   const [active, setActive] = useState<string>("trangchu");
   const [scrolling, setScrolling] = useState<string | null>(null);
   const cart = useCartStore((state) => state.cart);
+  const favorite = useFavoriteStore((state) => state.favorites);
   const menuItems: MenuProps["items"] = [
     {
       label: "Trang Chủ",
@@ -113,14 +114,12 @@ const Navbar = () => {
         >
           <Person2OutlinedIcon className="w-icon h-icon" />
         </button>
-        <button
-          className="relative cursor-pointer"
-        >
+        <Link to="/favorite" className="relative cursor-pointer">
           <FavoriteBorderOutlinedIcon className="w-icon h-icon" />
           <div className="absolute top-[-3px] right-[-3px] bg-red-500 text-white rounded-full text-xs px-1">
-            2
+            {favorite?.items.length || 0}
           </div>
-        </button>
+        </Link>
         <Link to="/cart" className="relative cursor-pointer">
           <ShoppingBagOutlinedIcon className="w-icon h-icon" />
           <div className="absolute top-[-3px] right-[-3px] bg-red-500 text-white rounded-full text-xs px-1">

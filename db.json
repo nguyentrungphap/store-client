@@ -13,78 +13,113 @@
   "products": [
     {
       "id": "p1",
-      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-0a0fde285dd94454980816865357dd2a.jpg?v=1694681170033",
-      "name": "Tai nghe Bluetooth",
+      "name": "Roller Blocks Rockin' Wagon",
+      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-c5996a88da1a49a2b87a36e93d27ae0c.jpg?v=1694681068693",
       "price": 500000,
-      "oldPrice": 700000,
+      "oldPrice": 2500000,
+      "discount": 80,
+      "brand": "F1GENZ Babies",
+      "category": "baby carriers",
+      "barcode": "138999404",
       "rating": 4.5,
-      "discount": 28,
-      "stock": 10,
-      "category": "Electronics",
-      "options": {
-        "color": ["black", "white"],
-        "size": ["S", "M", "L"]
-      }
+      "flashSale": {
+        "startDay": "26/08/2025",
+        "startTime": "20:00:00",
+        "endDay": "29/08/2025",
+        "endTime": "23:59:00",
+        "image": "https://file.hstatic.net/200000306687/file/ezgif.com-gif-maker_40e5c36d115b4904babbebc78c90c34e.gif"
+      },
+      "color": ["Đỏ", "Xanh", "Vàng"],
+      "size": ["S", "M", "L"],
+      "voucher": ["GIAM10", "MUASAM50"]
     },
     {
       "id": "p2",
-      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-c5996a88da1a49a2b87a36e93d27ae0c.jpg?v=1694681068693",
-      "name": "Điện thoại Samsung Galaxy A15",
-      "price": 4500000,
-      "oldPrice": 5000000,
-      "rating": 4.2,
-      "discount": 10,
-      "stock": 5,
-      "category": "Baby",
-      "options": {
-        "color": ["black", "white"],
-        "size": ["S", "M", "L"]
-      }
+      "name": "Baby Comfort Stroller",
+      "image": "https://cdn.tgdd.vn/Products/Images/88/292325/bao-thu-em-be-uniqlo-01.jpg",
+      "price": 1800000,
+      "oldPrice": 2500000,
+      "discount": 28,
+      "brand": "Uniqlo Kids",
+      "category": "strollers",
+      "barcode": "238991122",
+      "rating": 4.7,
+      "flashSale": {
+        "startDay": "01/09/2025",
+        "startTime": "08:00:00",
+        "endDay": "03/09/2025",
+        "endTime": "23:59:00",
+        "image": "https://file.hstatic.net/200000306687/file/flashsale-uniqlo.gif"
+      },
+      "color": ["Đen", "Xám"],
+      "size": ["M", "L"],
+      "voucher": ["GIAM20"]
     },
     {
       "id": "p3",
-      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-607ba543e4c958ae05442a348c0db.jpg?v=1694679790940",
-      "name": "Laptop Asus VivoBook 14",
-      "price": 12500000,
-      "oldPrice": 15000000,
-      "rating": 4.8,
-      "discount": 17,
-      "stock": 8,
-      "category": "Kids",
-      "options": {
-        "color": ["black", "white"],
-        "size": ["S", "M", "L"]
-      }
+      "name": "Soft Baby Blanket",
+      "image": "https://cdn.tgdd.vn/Files/2021/07/20/1370950/top-10-chan-cho-be-duoc-ua-chuong-nhat-2021-202107201646165635.jpg",
+      "price": 350000,
+      "oldPrice": 500000,
+      "discount": 30,
+      "brand": "Comfy Baby",
+      "category": "blankets",
+      "barcode": "339984455",
+      "rating": 4.2,
+      "flashSale": {
+        "startDay": "05/09/2025",
+        "startTime": "09:00:00",
+        "endDay": "06/09/2025",
+        "endTime": "22:00:00",
+        "image": "https://file.hstatic.net/200000306687/file/blanket-sale.gif"
+      },
+      "color": ["Hồng", "Xanh biển", "Trắng"],
+      "size": ["Free Size"],
+      "voucher": ["FREESHIP", "GIAM5"]
     },
     {
       "id": "p4",
-      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-96a88da1a49a2b87a36e93d27ae0c.jpg?v=1694681068693",
-      "name": "Bàn phím cơ Keychron K2",
-      "price": 1900000,
-      "oldPrice": 2200000,
-      "rating": 4.6,
-      "discount": 14,
-      "stock": 12,
-      "category": "Boys",
-      "options": {
-        "color": ["black", "white"],
-        "size": ["S", "M", "L"]
-      }
+      "name": "Wooden Toy Blocks",
+      "image": "https://cdn.tgdd.vn/Files/2019/07/15/1182527/nhung-loi-ich-khi-cho-tre-choi-do-choi-go-201907151406295636.jpg",
+      "price": 290000,
+      "oldPrice": 600000,
+      "discount": 52,
+      "brand": "ToyLand",
+      "category": "toys",
+      "barcode": "448884499",
+      "rating": 4.8,
+      "flashSale": {
+        "startDay": "10/09/2025",
+        "startTime": "10:00:00",
+        "endDay": "12/09/2025",
+        "endTime": "23:59:00",
+        "image": "https://file.hstatic.net/200000306687/file/toy-sale.gif"
+      },
+      "color": ["Đỏ", "Vàng", "Xanh lá"],
+      "size": ["Small Box", "Large Box"],
+      "voucher": ["GIAM15", "SALE30"]
     },
     {
       "id": "p5",
-      "image": "https://bizweb.dktcdn.net/100/488/521/products/upload-fde285dd94454980816865357dd2a.jpg?v=1694681170033",
-      "name": "Chuột Logitech G304",
-      "price": 850000,
-      "oldPrice": 1000000,
-      "rating": 4.4,
-      "discount": 15,
-      "stock": 20,
-      "category": "Girls",
-      "options": {
-        "color": ["black", "white"],
-        "size": ["S", "M", "L"]
-      }
+      "name": "Baby Feeding Set",
+      "image": "https://cdn.tgdd.vn/Files/2020/09/09/1287767/huong-dan-su-dung-bo-do-an-dam-cho-be-202009091025091739.jpg",
+      "price": 450000,
+      "oldPrice": 800000,
+      "discount": 44,
+      "brand": "Care4Baby",
+      "category": "feeding",
+      "barcode": "559992222",
+      "rating": 4.6,
+      "flashSale": {
+        "startDay": "15/09/2025",
+        "startTime": "12:00:00",
+        "endDay": "17/09/2025",
+        "endTime": "23:59:00",
+        "image": "https://file.hstatic.net/200000306687/file/feeding-sale.gif"
+      },
+      "color": ["Hồng", "Xanh dương"],
+      "size": ["S", "M"],
+      "voucher": ["GIAM10", "FREESHIP"]
     }
   ],
   "favorite": {

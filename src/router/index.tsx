@@ -8,6 +8,7 @@ import DetailsProduct from "@/pages/Product/components/DetailsProduct";
 import Cart from "@/pages/Cart";
 import Checkout from "@/pages/Checkout";
 import Favorite from "@/pages/Favorite";
+import Contact from "@/pages/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -41,6 +42,10 @@ export const router = createBrowserRouter([
       {
         path: "favorite",
         Component: Favorite,
+      },
+      {
+        path: "lien-he",
+        Component: Contact,
       },
     ],
   },

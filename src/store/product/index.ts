@@ -2,15 +2,28 @@ import { getProducts } from "@/apis/product/getProduct";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 
+interface FlashSale {
+  startDay: string; // e.g. "26/08/2025"
+  startTime: string; // e.g. "20:00:00"
+  endDay: string; // e.g. "29/08/2025"
+  endTime: string; // e.g. "23:59:00"
+  image: string; // flash sale banner image
+}
 export interface IProduct {
   id: string;
   name: string;
-  price: number;
   image?: string;
-  category?: string;
-  discount?: number;
-  rating?: number;
+  price?: number;
   oldPrice?: number;
+  discount?: number;
+  brand?: string;
+  category: string;
+  barcode?: string;
+  rating?: number;
+  flashSale?: FlashSale;
+  color?: string[];
+  size?: string[];
+  voucher?: string[];
 }
 
 interface ProductState {

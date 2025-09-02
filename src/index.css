@@ -33,6 +33,12 @@
     }
   } */
 }
+button {
+  user-select: none; /* chặn bôi đen chữ */
+  -webkit-user-select: none; /* cho Safari/Chrome */
+  -moz-user-select: none; /* cho Firefox */
+  -ms-user-select: none; /* cho IE/Edge cũ */
+}
 
 @layer utilities {
   .w-icon {

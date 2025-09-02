@@ -1,41 +1,25 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import Share from "./components/Share";
 import StarIcon from "@mui/icons-material/Star";
 import TimeCountDown from "@/components/TimeCountDown";
 import Start from "@mui/icons-material/StarBorderOutlined";
+import type { IProduct } from "@/store/product";
 
-const product = {
-  id: 1,
-  name: "Roller Blocks Rockin' Wagon",
-  price: 500000,
-  oldPrice: 2500000,
-  discount: 80,
-  brand: "F1GENZ Babies",
-  category: "baby carriers",
-  barcode: "138999404",
-  rating: 4.5,
-  flashSale: {
-    startDay: "26/08/2025",
-    startTime: "20:00:00",
-    endDay: "29/08/2025",
-    endTime: "23:59:00",
-    image:
-      "https://file.hstatic.net/200000306687/file/ezgif.com-gif-maker_40e5c36d115b4904babbebc78c90c34e.gif",
-  },
-  color: ["Đỏ", "Xanh", "Vàng"],
-  size: ["S", "M", "L"],
-  voucher: ["GIAM10", "MUASAM50"],
-};
+interface RightProps {
+  productItem?: IProduct; // có thể undefined vì bạn dùng find()
+}
 
-const infoList = [
-  { label: "Mã sản phẩm", value: product.id },
-  { label: "Barcode", value: product.barcode },
-  { label: "Thương hiệu", value: product.brand },
-  { label: "Dòng sản phẩm", value: product.category },
-];
-
-const Right = () => {
+const Right = (props: RightProps) => {
+  const { productItem } = props;
+  console.log("productItem", productItem);
   const [quantity, setQuantity] = useState(1);
+
+  const infoList = [
+    { label: "Mã sản phẩm", value: productItem?.id },
+    { label: "Barcode", value: productItem?.barcode },
+    { label: "Thương hiệu", value: productItem?.brand },
+    { label: "Dòng sản phẩm", value: productItem?.category },
+  ];
 
   const handleQuantityChange = (delta: number) => {
     setQuantity((prev) => Math.max(1, prev + delta));
@@ -46,7 +30,7 @@ const Right = () => {
       {/* Header */}
       <div className="flex flex-row-reverse justify-between items-center">
         <Share />
-        <h1 className="text-3xl font-bold">{product.name}</h1>
+        <h1 className="text-3xl font-bold">{productItem?.name}</h1>
       </div>
 
       {/* Product Info */}
@@ -64,18 +48,18 @@ const Right = () => {
       <div className="flex justify-between items-center my-4 border-y border-gray-300 border-dotted py-2">
         <div className="flex items-center gap-2">
           <del className="text-sm text-gray-500 line-through font-bold">
-            {product.oldPrice.toLocaleString("vi-VN")}₫
+            {(productItem?.oldPrice ?? 0).toLocaleString("vi-VN")}₫
           </del>
           <span className="font-bold text-2xl text-red-500">
-            {product.price.toLocaleString("vi-VN")}₫
+            {(productItem?.price ?? 0).toLocaleString("vi-VN")}₫
           </span>
           <span className="text-white bg-red-500 px-3 py-1 rounded-2xl">
-            Tiết kiệm {product.discount}%
+            Tiết kiệm {productItem?.discount}%
           </span>
         </div>
         <div className="flex justify-center gap-1">
           {[...Array(5)].map((_, idx) =>
-            idx < (product.rating ?? 0) ? (
+            idx < (productItem?.rating ?? 0) ? (
               <StarIcon key={idx} sx={{ color: "yellow" }} />
             ) : (
               <Start key={idx} sx={{ color: "#e5e7eb" }} />
@@ -85,19 +69,19 @@ const Right = () => {
       </div>
 
       {/* Flash Sale */}
-      {product.flashSale && (
+      {productItem?.flashSale && (
         <div className="flex items-center bg-gradient-to-l from-[#DD1829] to-[#FCC419] p-2 rounded-lg">
           <img
             title="Flash Sale"
-            src={product.flashSale.image}
+            src={productItem?.flashSale.image}
             alt="Flash Sale"
             className="w-30 h-8"
           />
           <TimeCountDown
-            startDay={product.flashSale.startDay}
-            startTime={product.flashSale.startTime}
-            endDay={product.flashSale.endDay}
-            endTime={product.flashSale.endTime}
+            startDay={productItem?.flashSale.startDay}
+            startTime={productItem?.flashSale.startTime}
+            endDay={productItem?.flashSale.endDay}
+            endTime={productItem?.flashSale.endTime}
           />
         </div>
       )}
@@ -106,7 +90,7 @@ const Right = () => {
       <div className="my-4">
         <div className="mb-2 font-semibold">Color:</div>
         <div className="flex gap-2 mb-4">
-          {product.color.map((color) => (
+          {productItem?.color?.map((color) => (
             <span
               key={color}
               className="px-3 py-1 rounded border border-gray-300 bg-gray-100 cursor-pointer hover:bg-gray-200"
@@ -117,7 +101,7 @@ const Right = () => {
         </div>
         <div className="mb-2 font-semibold">Size:</div>
         <div className="flex gap-2">
-          {product.size.map((size) => (
+          {productItem?.size?.map((size) => (
             <span
               key={size}
               className="px-3 py-1 rounded border border-gray-300 bg-gray-100 cursor-pointer hover:bg-gray-200"
@@ -156,7 +140,7 @@ const Right = () => {
       <div className="my-4">
         <div className="font-semibold mb-2">Voucher ưu đãi:</div>
         <div className="flex gap-2">
-          {product.voucher.map((voucher) => (
+          {productItem?.voucher?.map((voucher) => (
             <span
               key={voucher}
               className="bg-green-100 text-green-700 px-3 py-1 rounded border border-green-300 font-semibold cursor-pointer hover:bg-green-200"
