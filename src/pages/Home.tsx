@@ -8,7 +8,7 @@ const Home = () => {
   const renderProduct = (product: any) => {
     return (
       <Card
-      key={product.id}
+        key={product.id}
         id={product.id}
         image={product.image}
         name={product.name}
@@ -17,8 +17,8 @@ const Home = () => {
         rating={product.rating}
         discount={product.discount}
       />
-    );
-  };
+   );
+  }
   return (
     <>
       <Maincontent />
@@ -26,7 +26,7 @@ const Home = () => {
         <h2 className="text-3xl font-bold text-center mb-5">
           San Pham noi bat
         </h2>
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 ">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-5 px-4">
           {products.map(renderProduct)}
         </div>
       </div>

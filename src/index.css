@@ -94,4 +94,7 @@ button {
   html::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+  .change-slider {
+    padding: 0 !important;
+  }
 }

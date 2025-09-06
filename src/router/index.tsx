@@ -9,6 +9,7 @@ import Cart from "@/pages/Cart";
 import Checkout from "@/pages/Checkout";
 import Favorite from "@/pages/Favorite";
 import Contact from "@/pages/Contact";
+import News from "@/pages/News";
 
 export const router = createBrowserRouter([
   {
@@ -46,6 +47,10 @@ export const router = createBrowserRouter([
       {
         path: "lien-he",
         Component: Contact,
+      },
+      {
+        path: "tin-tuc",
+        Component: News,
       },
     ],
   },

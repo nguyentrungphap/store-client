@@ -128,5 +128,42 @@
       { "idProduct": "p2" },
       { "idProduct": "p5" }
     ]
-  }
+  },
+  "news": [
+    {
+      "id": 1,
+      "title": "Gợi ý đồ chơi phát triển vận động cho bé 0 - 6 tuổi đảm bảo an toàn và chất lượng",
+      "date": "18.05.2023",
+      "content": "Giải mã gen là công cụ kiểm tra thể chất và tiềm năng bẩm sinh để mở khóa tối đa tiềm năng trong trẻ. Ba mẹ nào có con nhỏ đang mong muốn xây dựng kế hoạch dinh dưỡng và vận động hợp lý, thì hãy theo dõi ngay những thông tin quan trọng về...",
+      "image": "./src/assets/news-1.webp"
+    },
+    {
+      "id": 2,
+      "title": "Vệ sinh máy hút sữa khi mới mua",
+      "date": "20.05.2023",
+      "content": "Giải mã gen là công cụ kiểm tra thể chất và tiềm năng bẩm sinh để mở khóa tối đa tiềm năng trong trẻ. Ba mẹ nào có con nhỏ đang mong muốn xây dựng kế hoạch dinh dưỡng và vận động hợp lý, thì hãy theo dõi ngay những thông tin quan trọng về...",
+      "image": "./src/assets/news-2.webp"
+    },
+    {
+      "id": 3,
+      "title": "6 lợi ích bất ngờ từ đồ chơi thông minh cho bé",
+      "date": "22.05.2023",
+      "content": "Giải mã gen là công cụ kiểm tra thể chất và tiềm năng bẩm sinh để mở khóa tối đa tiềm năng trong trẻ. Ba mẹ nào có con nhỏ đang mong muốn xây dựng kế hoạch dinh dưỡng và vận động hợp lý, thì hãy theo dõi ngay những thông tin quan trọng về...",
+      "image": "./src/assets/news-3.webp"
+    },
+    {
+      "id": 4,
+      "title": "Có nên mua xe đẩy em bé?",
+      "date": "25.05.2023",
+      "content": "Giải mã gen là công cụ kiểm tra thể chất và tiềm năng bẩm sinh để mở khóa tối đa tiềm năng trong trẻ. Ba mẹ nào có con nhỏ đang mong muốn xây dựng kế hoạch dinh dưỡng và vận động hợp lý, thì hãy theo dõi ngay những thông tin quan trọng về...",
+      "image": "./src/assets/news-5.jpg"
+    },
+    {
+      "id": 5,
+      "title": "Vì sao ba mẹ cần giải mã gen cho bé?",
+      "date": "25.05.2023",
+      "content": "Giải mã gen là công cụ kiểm tra thể chất và tiềm năng bẩm sinh để mở khóa tối đa tiềm năng trong trẻ. Ba mẹ nào có con nhỏ đang mong muốn xây dựng kế hoạch dinh dưỡng và vận động hợp lý, thì hãy theo dõi ngay những thông tin quan trọng về...",
+      "image": "./src/assets/news-4.jpg"
+    }
+  ]
 }

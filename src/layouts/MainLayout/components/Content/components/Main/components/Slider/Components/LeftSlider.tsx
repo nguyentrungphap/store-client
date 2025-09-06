@@ -1,4 +1,3 @@
-import { useEffect, useState, useRef } from "react";
 import Img1 from "@/assets/slider1.jpg";
 import Img2 from "@/assets/slider2.jpg";
 import Img3 from "@/assets/slider3.jpg";
@@ -9,8 +8,7 @@ const LeftSlider = () => {
     <Carousel
       showDot={true}
       autoPlaySpeed={3000}
-      itemClass=""
-      containerClass="max-h-[350px]"
+      containerClass="lg:max-h-[400px] w-full lg:w-3/4 change-slider"
       infinite={true}
     >
       <img src={Img1} alt="" className="w-full h-full object-cover" />

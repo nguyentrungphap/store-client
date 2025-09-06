@@ -14,18 +14,10 @@ import { useFavoriteStore } from "@/store/favorite";
 interface Props
   extends Pick<
     IProduct,
-    | "id"
-    | "image"
-    | "name"
-    | "price"
-    | "oldPrice"
-    | "rating"
-    | "discount"
-    | "category"
+    "id" | "image" | "name" | "price" | "oldPrice" | "rating" | "discount"
   > {}
 function Card(props: Props) {
-  const { id, image, name, price, oldPrice, rating, discount, category } =
-    props;
+  const { id, image, name, price, oldPrice, rating, discount } = props;
   const [showIcons, setShowIcons] = useState(false);
   const cart = useCartStore((state) => state.cart);
   const favorite = useFavoriteStore((state) => state.favorites);

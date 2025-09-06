@@ -1,7 +1,7 @@
 import Logo from "@/assets/footers-logo.png";
 const ContactFooter = () => {
   return (
-    <div className="grid grid-cols-5 gap-5">
+    <div className="grid grid-cols-2 lg:grid-cols-5 gap-5">
       <div>
         <img src={Logo} alt="..." className="mb-[25px]" />
         <p className="max-w-[85%] opacity-80">
@@ -12,8 +12,8 @@ const ContactFooter = () => {
         </p>
       </div>
       <div>
-        <h2 className="text-3xl mb-[25px]">Liên hệ</h2>
-        <div className="opacity-80 flex flex-col gap-2.5">
+        <h2 className="text-2xl lg:text-3xl mb-[25px]">Liên hệ</h2>
+        <div className="opacity-80 flex flex-col gap-2.5 text-sm lg:text-base">
           <p>
             Tư vấn dịch vụ:{" "}
             <span className="cursor-pointer hover:text-red-500">1800 6750</span>
@@ -36,8 +36,8 @@ const ContactFooter = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-3xl mb-[25px]">Về chúng tôi</h2>
-        <div className="flex flex-col gap-2.5">
+        <h2 className="text-2xl lg:text-3xl mb-[25px]">Về chúng tôi</h2>
+        <div className="flex flex-col gap-2.5  text-sm lg:text-base">
           <p className="cursor-pointer hover:text-red-500">Giới thiệu</p>
           <p className="cursor-pointer hover:text-red-500">
             Chính sách đổi trả
@@ -51,8 +51,8 @@ const ContactFooter = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-3xl mb-[25px]">Danh mục nổi bật</h2>
-        <div className="flex flex-col gap-2.5">
+        <h2 className="text-2xl lg:text-3xl mb-[25px]">Danh mục nổi bật</h2>
+        <div className="flex flex-col gap-2.5 text-sm lg:text-base">
           <p className="cursor-pointer hover:text-red-500">Anchor & Baby</p>
           <p className="cursor-pointer hover:text-red-500">Baby Seats</p>
           <p className="cursor-pointer hover:text-red-500">Bag & Clothes</p>
@@ -60,8 +60,10 @@ const ContactFooter = () => {
         </div>
       </div>
       <div>
-        <h2 className="text-3xl mb-[25px]">Liên hệ với chúng tôi</h2>
-        <div>
+        <h2 className="text-2xl lg:text-3xl mb-[25px]">
+          Liên hệ với chúng tôi
+        </h2>
+        <div className=" text-sm lg:text-base">
           <p>
             Luôn cập nhật tất cả các hành động mà chúng tôi đã lưu cho tất cả
             khách hàng của mình.

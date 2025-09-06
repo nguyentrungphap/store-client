@@ -3,7 +3,7 @@ import Img2 from "@/assets/right-slider-2.avif"; // Adjust the path as necessary
 
 const RightSlider = () => {
   return (
-    <div className="w-2/5 pl-5 h-full min-h-0 flex flex-col gap-2">
+    <div className="w-2/5 pl-5 h-full min-h-0 gap-2 hidden lg:block">
       <img
         src={Img1}
         alt=""
